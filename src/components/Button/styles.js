@@ -6,7 +6,9 @@ export const Btn = styled.button`
 
   border-radius: ${props => (props.rounded ? "50px" : "2px")};
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: ${props =>
       props.color
         ? props.theme.colors[props.color]

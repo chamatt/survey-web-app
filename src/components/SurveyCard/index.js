@@ -23,7 +23,7 @@ export default function Survey() {
         </ImgContainer>
         <TitleContainer>
           <Category>
-            <i className="material-icons right">event_note</i>Survey
+            <i className="material-icons left">event_note</i>Survey
           </Category>
           <Title>IT Executive Compensation Study</Title>
         </TitleContainer>

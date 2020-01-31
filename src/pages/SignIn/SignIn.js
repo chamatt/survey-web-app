@@ -36,7 +36,9 @@ export default function SignIn({ history }) {
         <Buttons>
           <Button onClick={() => history.push("/")}>Sign In</Button>
           <SizedBox height="20px" />
-          <Button color="purple">Create Account</Button>
+          <Button onClick={() => history.push("/register")} color="purple">
+            Create Account
+          </Button>
         </Buttons>
       </Card>
     </Container>
