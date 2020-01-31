@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.8c3776c1.chunk.css",
-    "main.js": "/static/js/main.6c8684ad.chunk.js",
-    "main.js.map": "/static/js/main.6c8684ad.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d2106eb4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d2106eb4.js.map",
-    "static/css/2.d88a60dc.chunk.css": "/static/css/2.d88a60dc.chunk.css",
-    "static/js/2.7c07df91.chunk.js": "/static/js/2.7c07df91.chunk.js",
-    "static/js/2.7c07df91.chunk.js.map": "/static/js/2.7c07df91.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.22cc39209c0aeaaf7c4a6e4daa7469cf.js": "/precache-manifest.22cc39209c0aeaaf7c4a6e4daa7469cf.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.d88a60dc.chunk.css.map": "/static/css/2.d88a60dc.chunk.css.map",
-    "static/css/main.8c3776c1.chunk.css.map": "/static/css/main.8c3776c1.chunk.css.map",
-    "static/js/2.7c07df91.chunk.js.LICENSE.txt": "/static/js/2.7c07df91.chunk.js.LICENSE.txt",
-    "static/media/flame-sign-up.png": "/static/media/flame-sign-up.90821be9.png"
+    "main.css": "/survey-web-app/static/css/main.8c3776c1.chunk.css",
+    "main.js": "/survey-web-app/static/js/main.5ee5dfb5.chunk.js",
+    "main.js.map": "/survey-web-app/static/js/main.5ee5dfb5.chunk.js.map",
+    "runtime-main.js": "/survey-web-app/static/js/runtime-main.5859d1fe.js",
+    "runtime-main.js.map": "/survey-web-app/static/js/runtime-main.5859d1fe.js.map",
+    "static/css/2.d88a60dc.chunk.css": "/survey-web-app/static/css/2.d88a60dc.chunk.css",
+    "static/js/2.4f9998de.chunk.js": "/survey-web-app/static/js/2.4f9998de.chunk.js",
+    "static/js/2.4f9998de.chunk.js.map": "/survey-web-app/static/js/2.4f9998de.chunk.js.map",
+    "index.html": "/survey-web-app/index.html",
+    "precache-manifest.09a27d8ff79792efc8b2412aa4e95a26.js": "/survey-web-app/precache-manifest.09a27d8ff79792efc8b2412aa4e95a26.js",
+    "service-worker.js": "/survey-web-app/service-worker.js",
+    "static/css/2.d88a60dc.chunk.css.map": "/survey-web-app/static/css/2.d88a60dc.chunk.css.map",
+    "static/css/main.8c3776c1.chunk.css.map": "/survey-web-app/static/css/main.8c3776c1.chunk.css.map",
+    "static/js/2.4f9998de.chunk.js.LICENSE.txt": "/survey-web-app/static/js/2.4f9998de.chunk.js.LICENSE.txt",
+    "static/media/flame-sign-up.png": "/survey-web-app/static/media/flame-sign-up.90821be9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d2106eb4.js",
+    "static/js/runtime-main.5859d1fe.js",
     "static/css/2.d88a60dc.chunk.css",
-    "static/js/2.7c07df91.chunk.js",
+    "static/js/2.4f9998de.chunk.js",
     "static/css/main.8c3776c1.chunk.css",
-    "static/js/main.6c8684ad.chunk.js"
+    "static/js/main.5ee5dfb5.chunk.js"
   ]
 }
