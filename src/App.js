@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ThemeProvider } from "styled-components";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import SignIn from "./pages/SignIn/SignIn";
+import themes from "./themes";
+import "materialize-css/dist/css/materialize.min.css";
+import Surveys from "./pages/Surveys";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={themes}>
+      <Router>
+        <Switch>
+          <Route path="/login" component={SignIn} />
+          <Route path="/" component={Surveys} />
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 

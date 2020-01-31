@@ -1,0 +1,12 @@
+.input-field .prefix.active {
+  color: white !important;
+}
+
+.input-field label.active {
+  color: white !important;
+}
+
+.input-field input.active {
+  border-bottom-color: white !important;
+  box-shadow: white !important ;
+}
