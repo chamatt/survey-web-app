@@ -12,9 +12,10 @@ export default function Button({
   return (
     <Btn
       {...rest}
-      className={`btn waves-effect waves-light z-depth-0 ${large && "large"}`}
+      className={`btn waves-effect waves-light z-depth-0 ${large &&
+        "btn-large"}`}
     >
-      {leftIcon && <i className="material-icons right">{leftIcon}</i>}
+      {leftIcon && <i className="material-icons left">{leftIcon}</i>}
       {children}
       {rightIcon && <i className="material-icons right">{rightIcon}</i>}
     </Btn>
