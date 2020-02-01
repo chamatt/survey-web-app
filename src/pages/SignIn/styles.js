@@ -1,12 +1,15 @@
 import styled from "styled-components";
+import BaseContainer from "../../components/BaseContainer";
+import TCard from "../../components/Card";
 
-export const Container = styled.div`
+export const Container = styled(BaseContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
   flex-direction: column;
   background-color: ${props => props.theme.colors.backgroundColor};
+  width: 100%;
 `;
 
 export const Title = styled.h2`
@@ -28,4 +31,9 @@ export const VectorContainer = styled.div`
 
 export const Img = styled.img`
   width: 100%;
+`;
+
+export const Card = styled(TCard)`
+  max-width: 500px;
+  width: 90%;
 `;

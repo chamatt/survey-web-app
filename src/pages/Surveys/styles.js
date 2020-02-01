@@ -8,6 +8,8 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: ${props => props.theme.colors.backgroundColor};
   padding: 0 50px;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 export const SurveyGrid = styled.div`

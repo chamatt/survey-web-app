@@ -5,9 +5,9 @@ import {
   Title,
   Buttons,
   VectorContainer,
-  Img
+  Img,
+  Card
 } from "../SignIn/styles";
-import Card from "../../components/Card";
 import M from "materialize-css";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -67,9 +67,9 @@ export default function SignUp({ history }) {
         </form>
         <SizedBox height="20px" />
         <Buttons>
-          <Button onClick={() => history.push("/")}>Sign In</Button>
-          <SizedBox height="20px" />
-          <Button color="purple">Create Account</Button>
+          <Button color="purple" onClick={() => history.push("/")}>
+            Create Account
+          </Button>
         </Buttons>
       </Card>
     </Container>

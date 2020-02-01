@@ -1,7 +1,13 @@
 import React from "react";
 
-import { Container, Title, Buttons, VectorContainer, Img } from "./styles";
-import Card from "../../components/Card";
+import {
+  Container,
+  Title,
+  Buttons,
+  VectorContainer,
+  Img,
+  Card
+} from "./styles";
 import M from "materialize-css";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -15,7 +21,7 @@ export default function SignIn({ history }) {
         <Img src={signin_vector}></Img>
       </VectorContainer>
       <Title>Sign In</Title>
-      <Card width="50%">
+      <Card>
         <form class="col s12">
           <Input
             id="email"
