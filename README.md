@@ -1,69 +1,96 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Survey App
 
-## Available Scripts
+**Tier:** 3-Advanced
 
-In the project directory, you can run:
+Surveys are a valuable part of any developers toolbox. They are useful for
+getting feedback from your users on a variety of topics including application
+satisfaction, requirements, upcoming needs, issues, priorities, and just plain
+aggravations to name a few.
 
-### `yarn start`
+The Survey app gives you the opportunity to learn by developing a full-featured
+app that will you can add to your toolbox. It provides the ability to define a
+survey, allow users to respond within a predefined timeframe, and tabulate
+and present results.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Users of this app are divided into two distinct roles, each having different
+requirements:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+-   _Survey Coordinators_ define and conduct surveys. This is an administrative
+    function not available to normal users.
+-   _Survey Respondents_ Complete surveys and view results. They have no
+    administrative privileges within the app.
 
-### `yarn test`
+Commercial survey tools include distribution functionality that mass emails
+surveys to Survey Respondents. For simplicity, this app assumes that surveys
+open for responses will be accessed from the app's web page.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## User Stories
 
-### `yarn build`
+### General
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   [ ] Survey Coordinators and Survey Respondents can define, conduct, and
+        view surveys and survey results from a common website
+-   [ ] Survey Coordinators can login to the app to access administrative
+        functions, like defining a survey.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Defining a Survey
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   [ ] Survey Coordinator can define a survey containing 1-10 multiple choice
+        questions.
+-   [ ] Survey Coordinator can define 1-5 mutually exclusive selections to each
+        question.
+-   [ ] Survey Coordinator can enter a title for the survey.
+-   [ ] Survey Coordinator can click a 'Cancel' button to return to the home
+        page without saving the survey.
+-   [ ] Survey Coordinator can click a 'Save' button save a survey.
 
-### `yarn eject`
+### Conducting a Survey
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   [ ] Survey Coordinator can open a survey by selecting a survey from a
+        list of previously defined surveys
+-   [ ] Survey Coordinators can close a survey by selecting it from a list of
+        open surveys
+-   [ ] Survey Respondent can complete a survey by selecting it from a list of
+        open surveys
+-   [ ] Survey Respondent can select responses to survey questions by clicking
+        on a checkbox
+-   [ ] Survey Respondents can see that a previously selected response will
+        automatically be unchecked if a different response is clicked.
+-   [ ] Survey Respondents can click a 'Cancel' button to return to the home
+        page without submitting the survey.
+-   [ ] Survey Respondents can click a 'Submit' button submit their responses
+        to the survey.
+-   [ ] Survey Respondents can see an error message if 'Submit' is clicked,
+        but not all questions have been responded to.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Viewing Survey Results
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-   [ ] Survey Coordinators and Survey Respondents can select the survey to
+        display from a list of closed surveys
+-   [ ] Survey Coordinators and Survey Respondents can view survey results as
+        in tabular format showing the number of responses for each of the possible
+        selections to the questions.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Bonus features
 
-## Learn More
+-   [ ] Survey Respondents can create a unique account in the app
+-   [ ] Survey Respondents can login to the app
+-   [ ] Survey Respondents cannot complete the same survey more than once
+-   [ ] Survey Coordinators and Survey Respondents can view graphical
+        representations of survey results (e.g. pie, bar, column, etc. charts)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Useful links and resources
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Libraries for building surveys:
 
-### Code Splitting
+-   [SurveyJS](https://surveyjs.io/Overview/Library/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Some commercial survey services include:
 
-### Analyzing the Bundle Size
+-   [Survey Monkey](https://www.surveymonkey.com/)
+-   [Traversy](https://youtu.be/SSDED3XKz-0)
+-   [Typeform](https://www.typeform.com/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Example projects
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# survey-web-app
+[Javascript Questionnaire](https://codepen.io/amyfu/pen/oLChg)
