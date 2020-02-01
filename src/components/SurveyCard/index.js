@@ -13,8 +13,14 @@ import {
   Footer
 } from "./styles";
 import Button from "../Button";
+import { withRouter } from "react-router-dom";
 
-export default function Survey() {
+const SurveyCard = ({
+  history,
+  title = "IT Executive Compensation Study",
+  description = "Eae pessoal tudo bem aqui quem fala é o Edu. Eae pessoal tudo bem",
+  surveyId = "123"
+}) => {
   return (
     <SurveyContainer>
       <Heading>
@@ -25,7 +31,7 @@ export default function Survey() {
           <Category>
             <i className="material-icons left">event_note</i>Survey
           </Category>
-          <Title>IT Executive Compensation Study</Title>
+          <Title>{title}</Title>
         </TitleContainer>
       </Heading>
       <Body>
@@ -35,10 +41,16 @@ export default function Survey() {
         </Description>
       </Body>
       <Footer>
-        <Button color="purple" rounded>
+        <Button
+          color="purple"
+          rounded
+          onClick={() => history.push(`survey/${surveyId}`)}
+        >
           Take Survey
         </Button>
       </Footer>
     </SurveyContainer>
   );
-}
+};
+
+export default withRouter(SurveyCard);

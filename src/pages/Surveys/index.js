@@ -20,7 +20,7 @@ export default function Surveys() {
       <Title>Surveys</Title>
       <SizedBox height="20px"></SizedBox>
       <SurveyGrid>
-        <SurveyCard />
+        <SurveyCard surveyId="12312312312" />
         <SurveyCard />
         <SurveyCard />
         <SurveyCard />

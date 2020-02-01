@@ -10,6 +10,8 @@ export const Container = styled(BaseContainer)`
   flex-direction: column;
   background-color: ${props => props.theme.colors.backgroundColor};
   width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 export const Title = styled.h2`

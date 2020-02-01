@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex: 1;
   flex-direction: column;
   background-color: ${props => props.theme.colors.backgroundColor};
-  padding: 0 50px;
+
   max-width: 1200px;
   margin: 0 auto;
 `;
@@ -18,7 +18,6 @@ export const SurveyGrid = styled.div`
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
 `;
 
 export const Title = styled.h2`
