@@ -44,7 +44,7 @@ const SurveyCard = ({
         <Button
           color="purple"
           rounded
-          onClick={() => history.push(`survey/${surveyId}`)}
+          onClick={() => history.push(`/survey/${surveyId}`)}
         >
           Take Survey
         </Button>

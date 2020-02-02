@@ -1,41 +1,200 @@
 import React, { useState } from "react";
-
-import { Container, Card, Question, Buttons } from "./styles";
+import { Route } from "react-router-dom";
+import { Container, Card, Question, Buttons, Head } from "./styles";
 import AnswerItem from "../../components/AnswerItem";
 import Button from "../../components/Button";
 import themes from "../../themes";
 import SizedBox from "../../components/SizedBox";
 import BackLink from "../../components/BackLink";
 import Header from "../../components/Header";
+import VectorContainer from "../../components/VectorContainer";
+import done_vector from "../../assets/img/task-done.png";
+import bermuda_welcome from "../../assets/img/bermuda-welcome.png";
 
-export default function Survey({ history }) {
-  const [selected, setSelected] = useState();
+const mock = {
+  questions: [
+    {
+      options: ["option 1", "option 2", "option 3"],
+      createdAt: "2020-01-31T17:35:37.332Z",
+      _id: "5e3465747081ea606ddff593",
+      title: "question title",
+      __v: 0
+    },
+    {
+      options: ["option 1", "option 2", "option 3"],
+      createdAt: "2020-01-31T17:35:37.332Z",
+      _id: "5e3465747081ea606ddff594",
+      title: "question title 2",
+      __v: 0
+    }
+  ],
+  status: "ACTIVE",
+  createdAt: "2020-01-31T17:35:37.330Z",
+  deletedAt: null,
+  _id: "5e3465747081ea606ddff595",
+  title: "survey title",
+  createdBy: {
+    createdAt: "2020-01-31T16:52:41.315Z",
+    deletedAt: null,
+    _id: "5e345b5a42b8e14ce562a192",
+    username: "brenoscakz123231er",
+    email: "brenoscalze31231r1@gmail.com",
+    password: "$2a$10$7oH/lH4wAJh.KVHMTdd0qOJ.Yi5b3S3Mp.seMcAQuchybM3vYOphS",
+    role: "coordinator",
+    name: "Breno",
+    __v: 0
+  },
+  __v: 0
+};
+
+export default function Survey({ history, match }) {
+  const [selections, setSelections] = useState({});
+  const { questions, ...survey } = mock;
+
+  console.log(selections);
+
+  const goToNextPage = () => {
+    const nextPageId = getNextPage(getQuestionId(match.url), questions);
+    console.log({ nextPageId });
+    console.log(getQuestionId(match.url), questions, nextPageId);
+    if (nextPageId) {
+      history.push(
+        `${getUrlWithoutLastPart(match.url)}/${getNextPage(
+          getQuestionId(match.url),
+          questions
+        )}`
+      );
+    } else {
+      history.push(`/survey/${match.params.surveyId}/complete`);
+    }
+  };
 
   return (
     <Container>
       <Header />
-      <Card>
-        <BackLink onClick={() => history.goBack()}>Back to Login</BackLink>
-        <Question>What's your mother maidem name?</Question>
-        <SizedBox height="20px" />
-        {[0, 1, 2, 3].map(id => (
-          <AnswerItem
-            id={id}
-            selected={selected === id}
-            onClick={setSelected}
-          ></AnswerItem>
-        ))}
-        <Buttons>
-          <Button
-            large
-            color="secondary"
-            textColor={themes.colors.textNormal}
-            rightIcon="chevron_right"
-          >
-            Next
-          </Button>
-        </Buttons>
-      </Card>
+      <Route exact path={`/survey/:surveyId`}>
+        <Card>
+          <BackLink onClick={() => history.goBack()}>Back to surveys</BackLink>
+          <Head>
+            <Question>Take a Quick Survey</Question>
+            <SizedBox height="20px"></SizedBox>
+            <VectorContainer src={bermuda_welcome} />
+            <SizedBox height="20px"></SizedBox>
+          </Head>
+          <Buttons>
+            <Button
+              large
+              block
+              color="secondary"
+              textColor={themes.colors.textNormal}
+              rightIcon="chevron_right"
+              onClick={() =>
+                history.push(
+                  `/survey/${match.params.surveyId}/questions/${questions[0]._id}`
+                )
+              }
+            >
+              Start Now
+            </Button>
+          </Buttons>
+        </Card>
+      </Route>
+
+      {questions.map(question => (
+        <Route
+          exact
+          path={`${getUrlWithoutLastPart(match.path)}/${question._id}`}
+        >
+          <Card>
+            <BackLink onClick={() => history.goBack()}>
+              Previous Question
+            </BackLink>
+            <Question>{question.title}</Question>
+            <SizedBox height="20px" />
+            {question.options.map(text => (
+              <AnswerItem
+                questionId={question._id}
+                answerId={text}
+                text={text}
+                selected={selections[question._id] === text}
+                selections={selections}
+                onSelect={setSelections}
+              ></AnswerItem>
+            ))}
+            <Buttons>
+              <Button
+                large
+                block
+                disabled={!selections[getQuestionId(match.url)]}
+                color="secondary"
+                textColor={themes.colors.textNormal}
+                rightIcon="chevron_right"
+                onClick={goToNextPage}
+              >
+                Next
+              </Button>
+            </Buttons>
+          </Card>
+        </Route>
+      ))}
+
+      <Route exact path={`/survey/:surveyId/complete`}>
+        <Card center>
+          <BackLink onClick={() => history.goBack()}>
+            Previous Question
+          </BackLink>
+
+          <Head>
+            <Question>Survey Complete</Question>
+            <SizedBox height="20px"></SizedBox>
+            <VectorContainer src={done_vector} />
+            <SizedBox height="20px"></SizedBox>
+          </Head>
+          <Buttons>
+            <Button
+              large
+              color="danger"
+              leftIcon="cancel"
+              onClick={() => history.push("/surveys")}
+            >
+              Cancel
+            </Button>
+            <SizedBox width="40px" />
+            <Button
+              large
+              color="secondary"
+              textColor={themes.colors.textNormal}
+              leftIcon="check_circle"
+            >
+              Submit
+            </Button>
+          </Buttons>
+        </Card>
+      </Route>
     </Container>
   );
+}
+
+function getUrlWithoutLastPart(url) {
+  return url
+    .split("/")
+    .slice(0, -1)
+    .join("/");
+}
+
+function getNextPage(id, arr) {
+  const currentPageNumber = arr
+    .map((el, i) => (el._id === id ? i : null))
+    .filter(el => el);
+
+  const nextPage = arr[currentPageNumber + 1];
+  if (nextPage?._id) return nextPage._id;
+  return null;
+}
+
+function getQuestionId(url) {
+  return url
+    .split("/")
+    .slice(-1)
+    .join("");
 }

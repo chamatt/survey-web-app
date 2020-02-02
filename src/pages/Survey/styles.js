@@ -14,10 +14,10 @@ export const Container = styled(BaseContainer)`
 `;
 
 export const Card = styled(TCard)`
-  width: 100%;
+  width: 90%;
   margin-left: 15px;
   margin-right: 15px;
-
+  margin-bottom: 50px;
   padding-left: 20px;
   padding-right: 20px;
   color: ${props => props.theme.colors.secondary};
@@ -32,6 +32,8 @@ export const Question = styled.h2`
   font-weight: bold;
   padding-left: 20px;
   padding-right: 20px;
+  font-size: 2.5em;
+  text-transform: capitalize;
 `;
 export const Buttons = styled.div`
   display: flex;
@@ -39,4 +41,11 @@ export const Buttons = styled.div`
   align-items: center;
   justify-content: center;
   padding-top: 50px;
+`;
+
+export const Head = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 `;

@@ -1,26 +1,18 @@
 import React from "react";
 
-import {
-  Container,
-  Title,
-  Buttons,
-  VectorContainer,
-  Img,
-  Card
-} from "../SignIn/styles";
+import { Container, Title, Buttons, Card } from "../SignIn/styles";
 import M from "materialize-css";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import SizedBox from "../../components/SizedBox";
+import VectorContainer from "../../components/VectorContainer";
 import signin_vector from "../../assets/img/flame-sign-up.png";
 import BackLink from "../../components/BackLink";
 
 export default function SignUp({ history }) {
   return (
     <Container>
-      <VectorContainer>
-        <Img src={signin_vector}></Img>
-      </VectorContainer>
+      <VectorContainer src={signin_vector} />
       <Title>Sign Up</Title>
       <Card width="50%">
         <BackLink onClick={() => history.push("/login")}>

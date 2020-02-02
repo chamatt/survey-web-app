@@ -18,11 +18,8 @@ export const Btn = styled.button`
   }
 
   ${props =>
-    props.big &&
+    props.block &&
     `
-    font-size: 1.5rem;
-    padding: 15px 50px;
-    width: auto;
-    height: auto;
+    width: 100%;
   `}
 `;

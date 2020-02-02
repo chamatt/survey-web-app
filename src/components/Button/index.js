@@ -7,13 +7,16 @@ export default function Button({
   rightIcon,
   children,
   large,
+  block,
+  disabled,
   ...rest
 }) {
   return (
     <Btn
       {...rest}
+      block={block}
       className={`btn waves-effect waves-light z-depth-0 ${large &&
-        "btn-large"}`}
+        "btn-large"} ${disabled && "disabled"}`}
     >
       {leftIcon && <i className="material-icons left">{leftIcon}</i>}
       {children}

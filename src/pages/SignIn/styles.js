@@ -26,15 +26,6 @@ export const Buttons = styled.div`
   justify-content: center;
 `;
 
-export const VectorContainer = styled.div`
-  object-fit: contain;
-  width: 200px;
-`;
-
-export const Img = styled.img`
-  width: 100%;
-`;
-
 export const Card = styled(TCard)`
   max-width: 500px;
   width: 90%;

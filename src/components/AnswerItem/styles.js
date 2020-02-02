@@ -35,6 +35,7 @@ export const AnswerTextContainer = styled.div`
   flex: 1;
   padding: 15px 5px;
   padding-left: 15px;
+  text-transform: capitalize;
 `;
 
 export const AnswerText = styled.p`

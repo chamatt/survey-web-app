@@ -14,7 +14,13 @@ function App() {
     <ThemeProvider theme={themes}>
       <Router basename="/">
         <Switch>
-          <Route path="/survey/:id" component={Survey} />
+          <Route exact path="/survey/:surveyId/complete" component={Survey} />
+          <Route exact path="/survey/:surveyId" component={Survey} />
+          <Route
+            exact
+            path="/survey/:surveyId/questions/:questionId"
+            component={Survey}
+          />
           <Route path="/register" component={SignUp} />
           <Route path="/login" component={SignIn} />
           <Route path="/" component={Surveys} />
