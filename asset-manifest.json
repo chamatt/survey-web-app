@@ -1,26 +1,28 @@
 {
   "files": {
     "main.css": "/survey-web-app/static/css/main.474744a3.chunk.css",
-    "main.js": "/survey-web-app/static/js/main.8ea22213.chunk.js",
-    "main.js.map": "/survey-web-app/static/js/main.8ea22213.chunk.js.map",
+    "main.js": "/survey-web-app/static/js/main.e9241078.chunk.js",
+    "main.js.map": "/survey-web-app/static/js/main.e9241078.chunk.js.map",
     "runtime-main.js": "/survey-web-app/static/js/runtime-main.5859d1fe.js",
     "runtime-main.js.map": "/survey-web-app/static/js/runtime-main.5859d1fe.js.map",
     "static/css/2.d88a60dc.chunk.css": "/survey-web-app/static/css/2.d88a60dc.chunk.css",
-    "static/js/2.c466d975.chunk.js": "/survey-web-app/static/js/2.c466d975.chunk.js",
-    "static/js/2.c466d975.chunk.js.map": "/survey-web-app/static/js/2.c466d975.chunk.js.map",
+    "static/js/2.985f2433.chunk.js": "/survey-web-app/static/js/2.985f2433.chunk.js",
+    "static/js/2.985f2433.chunk.js.map": "/survey-web-app/static/js/2.985f2433.chunk.js.map",
     "index.html": "/survey-web-app/index.html",
-    "precache-manifest.b7b3ec31be78451a42852b0c6cc490bd.js": "/survey-web-app/precache-manifest.b7b3ec31be78451a42852b0c6cc490bd.js",
+    "precache-manifest.1211e13a5c4b904e8b6a9d51ce6ead05.js": "/survey-web-app/precache-manifest.1211e13a5c4b904e8b6a9d51ce6ead05.js",
     "service-worker.js": "/survey-web-app/service-worker.js",
     "static/css/2.d88a60dc.chunk.css.map": "/survey-web-app/static/css/2.d88a60dc.chunk.css.map",
     "static/css/main.474744a3.chunk.css.map": "/survey-web-app/static/css/main.474744a3.chunk.css.map",
-    "static/js/2.c466d975.chunk.js.LICENSE.txt": "/survey-web-app/static/js/2.c466d975.chunk.js.LICENSE.txt",
-    "static/media/flame-sign-up.png": "/survey-web-app/static/media/flame-sign-up.90821be9.png"
+    "static/js/2.985f2433.chunk.js.LICENSE.txt": "/survey-web-app/static/js/2.985f2433.chunk.js.LICENSE.txt",
+    "static/media/bermuda-welcome.png": "/survey-web-app/static/media/bermuda-welcome.9963302c.png",
+    "static/media/flame-sign-up.png": "/survey-web-app/static/media/flame-sign-up.90821be9.png",
+    "static/media/task-done.png": "/survey-web-app/static/media/task-done.b351d20f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.5859d1fe.js",
     "static/css/2.d88a60dc.chunk.css",
-    "static/js/2.c466d975.chunk.js",
+    "static/js/2.985f2433.chunk.js",
     "static/css/main.474744a3.chunk.css",
-    "static/js/main.8ea22213.chunk.js"
+    "static/js/main.e9241078.chunk.js"
   ]
 }
