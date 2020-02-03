@@ -6,16 +6,23 @@ import {
   RightContainer,
   Center,
   Card,
-  User
+  User,
+  LogoutButton
 } from "./styles";
 import Button from "../Button";
 import Avatar from "../Avatar";
 import { withRouter } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
+import axiosInstance from "../../services/api";
 
 function Header({ history }) {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const isAdmin = user?.data?.role?.toUpperCase() === "COORDINATOR";
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser({ isLoggedIn: false });
+    axiosInstance.defaults.headers.common["Authorization"] = undefined;
+  };
 
   return (
     <Container>
@@ -28,7 +35,7 @@ function Header({ history }) {
       </LeftContainer>
       <Center></Center>
       <RightContainer>
-        {!user.isLoggedIn ? (
+        {!user?.isLoggedIn ? (
           <Card onClick={() => history.push("/login")}>
             <User>Login</User>
             <Avatar
@@ -37,7 +44,10 @@ function Header({ history }) {
             ></Avatar>
           </Card>
         ) : (
-          <p style={{ color: "white" }}>Welcome {user.data.name}</p>
+          <p style={{ color: "white" }}>
+            Welcome {user.data.name}.{" "}
+            <LogoutButton onClick={logout}>Logout.</LogoutButton>
+          </p>
         )}
       </RightContainer>
     </Container>

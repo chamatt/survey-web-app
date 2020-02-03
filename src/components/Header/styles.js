@@ -48,3 +48,7 @@ export const User = styled.p`
   color: ${props => props.theme.colors.secondary};
   font-weight: bold;
 `;
+
+export const LogoutButton = styled.span`
+  cursor: pointer;
+`;
