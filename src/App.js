@@ -7,6 +7,7 @@ import themes from "./themes";
 import "materialize-css/dist/css/materialize.min.css";
 import Surveys from "./pages/Surveys";
 import SignUp from "./pages/SignUp/SignUp";
+import Results from "./pages/Results/Results";
 import Survey from "./pages/Survey";
 import CreateSurvey from "./pages/CreateSurvey";
 import AdminRoute from "./components/ProtectedRoutes/adminProtected";
@@ -36,6 +37,7 @@ function App() {
               component={Survey}
             />
             <Route path="/register" component={SignUp} />
+            <Route path="/results/:id" component={Results} exact />
             <Route path="/login" component={SignIn} />
             <Route path="/" component={Surveys} />
           </Switch>

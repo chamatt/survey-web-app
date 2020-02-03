@@ -19,6 +19,7 @@ function Header({
   history,
   createSurvey = true,
   showUser = true,
+  showHome = false,
   leftButtons
 }) {
   const { user, setUser } = useContext(AuthContext);
@@ -47,10 +48,15 @@ function Header({
   return (
     <Container>
       <LeftContainer>
-        {createSurvey && isAdmin && (
-          <Button onClick={() => history.push("/create")}>
-            Create New Survey
-          </Button>
+        {showHome ? (
+          <LogoutButton onClick={() => history.push("/")}>Home</LogoutButton>
+        ) : (
+          createSurvey &&
+          isAdmin && (
+            <Button onClick={() => history.push("/create")}>
+              Create New Survey
+            </Button>
+          )
         )}
         {leftButtons && leftButtons}
       </LeftContainer>

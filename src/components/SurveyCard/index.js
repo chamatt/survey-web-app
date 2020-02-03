@@ -69,7 +69,7 @@ const SurveyCard = ({
           <Button
             color={isActive ? "purple" : "green"}
             rounded
-            onClick={() => history.push(`/survey/${surveyId}`)}
+            onClick={() => history.push(`/results/${surveyId}`)}
           >
             {isActive ? "Take Survey" : "See Results"}
           </Button>
