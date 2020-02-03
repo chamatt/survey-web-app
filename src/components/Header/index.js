@@ -14,6 +14,8 @@ import Avatar from "../Avatar";
 import { withRouter } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
 import axiosInstance from "../../services/api";
+import VectorContainer from "../../components/VectorContainer";
+import signin_vector from "../../assets/img/flame-sign-up.png";
 
 function Header({
   history,
@@ -53,14 +55,21 @@ function Header({
         ) : (
           createSurvey &&
           isAdmin && (
-            <Button onClick={() => history.push("/create")}>
+            <Button color="green" onClick={() => history.push("/create")}>
               Create New Survey
             </Button>
           )
         )}
         {leftButtons && leftButtons}
       </LeftContainer>
-      <Center></Center>
+      <Center>
+        <VectorContainer
+          clickable
+          size="50px"
+          src={signin_vector}
+          onClick={() => history.push("/")}
+        ></VectorContainer>
+      </Center>
       <RightContainer>{showUser && userInfo}</RightContainer>
     </Container>
   );
