@@ -33,7 +33,7 @@ export default function Survey({ history, match }) {
 
   return (
     <Container>
-      <Header showHome={true} />
+      <Header />
       {data && (
         <>
           <Title>{data.title}</Title>

@@ -7,7 +7,7 @@ import themes from "./themes";
 import "materialize-css/dist/css/materialize.min.css";
 import Surveys from "./pages/Surveys";
 import SignUp from "./pages/SignUp/SignUp";
-import Results from "./pages/Results/Results";
+import Results from "./pages/Results";
 import Survey from "./pages/Survey";
 import CreateSurvey from "./pages/CreateSurvey";
 import AdminRoute from "./components/ProtectedRoutes/adminProtected";
