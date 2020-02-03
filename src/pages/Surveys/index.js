@@ -1,17 +1,26 @@
-import React from "react";
-import useFetch from "react-fetch-hook";
+import React, { useEffect, useState } from "react";
 
 import { Container, SurveyGrid, Title } from "./styles";
 import SurveyCard from "../../components/SurveyCard";
 import Header from "../../components/Header";
 import SizedBox from "../../components/SizedBox";
+import axiosInstace from "../../services/api";
 
 export default function Surveys() {
-  const { isLoading, data } = useFetch(
-    "https://nextly-survey.herokuapp.com/surveys"
-  );
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
 
-  console.log(data);
+  useEffect(() => {
+    axiosInstace
+      .get("/surveys/")
+      .then(() => {
+        setLoading(false);
+      })
+      .catch(({ response }) => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <Container>
       <Header />
@@ -20,8 +29,8 @@ export default function Surveys() {
       <Title>Surveys</Title>
       <SizedBox height="20px"></SizedBox>
       <SurveyGrid>
-        {!isLoading &&
-          data.map(survey => (
+        {!loading &&
+          data?.map(survey => (
             <SurveyCard
               title={survey.title}
               surveyId={survey.id}

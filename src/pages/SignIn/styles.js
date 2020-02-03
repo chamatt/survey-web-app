@@ -30,3 +30,7 @@ export const Card = styled(TCard)`
   max-width: 500px;
   width: 90%;
 `;
+
+export const ErrorMessage = styled.p`
+  color: red;
+`;
