@@ -10,6 +10,8 @@ import SignUp from "./pages/SignUp/SignUp";
 import Survey from "./pages/Survey";
 import CreateSurvey from "./pages/CreateSurvey";
 import AdminRoute from "./components/ProtectedRoutes/adminProtected";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "materialize-css";
 
 function App() {
@@ -40,6 +42,7 @@ function App() {
             <Route path="/" component={Surveys} />
           </Switch>
         </Router>
+        <ToastContainer />
       </AuthContext.Provider>
     </ThemeProvider>
   );

@@ -11,43 +11,7 @@ import VectorContainer from "../../components/VectorContainer";
 import done_vector from "../../assets/img/task-done.png";
 import bermuda_welcome from "../../assets/img/bermuda-welcome.png";
 import useFetch from "react-fetch-hook";
-import axios from "axios";
-
-const mock = {
-  questions: [
-    {
-      options: ["option 1", "option 2", "option 3"],
-      createdAt: "2020-01-31T17:35:37.332Z",
-      id: "5e3465747081ea606ddff593",
-      title: "question title",
-      __v: 0
-    },
-    {
-      options: ["option 1", "option 2", "option 3"],
-      createdAt: "2020-01-31T17:35:37.332Z",
-      id: "5e3465747081ea606ddff594",
-      title: "question title 2",
-      __v: 0
-    }
-  ],
-  status: "ACTIVE",
-  createdAt: "2020-01-31T17:35:37.330Z",
-  deletedAt: null,
-  id: "5e3465747081ea606ddff595",
-  title: "survey title",
-  createdBy: {
-    createdAt: "2020-01-31T16:52:41.315Z",
-    deletedAt: null,
-    id: "5e345b5a42b8e14ce562a192",
-    username: "brenoscakz123231er",
-    email: "brenoscalze31231r1@gmail.com",
-    password: "$2a$10$7oH/lH4wAJh.KVHMTdd0qOJ.Yi5b3S3Mp.seMcAQuchybM3vYOphS",
-    role: "coordinator",
-    name: "Breno",
-    __v: 0
-  },
-  __v: 0
-};
+import api from "../../services/api";
 
 export default function Survey({ history, match }) {
   const [selections, setSelections] = useState({});
@@ -95,8 +59,8 @@ export default function Survey({ history, match }) {
 
     console.log(requestBody);
 
-    axios
-      .post("https://nextly-survey.herokuapp.com/entries", requestBody)
+    api
+      .post("/entries", requestBody)
       .then(() => {
         history.push("/");
       })

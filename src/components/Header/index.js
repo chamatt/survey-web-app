@@ -48,7 +48,7 @@ function Header({
     <Container>
       <LeftContainer>
         {createSurvey && isAdmin && (
-          <Button onClick={() => history.push("/create")}>
+          <Button color="green" onClick={() => history.push("/create")}>
             Create New Survey
           </Button>
         )}

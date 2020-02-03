@@ -7,6 +7,7 @@ export default {
     purple: "#8e44ad",
     textNormal: "#3C4659",
     textLight: "#ADADC4",
-    red: "#8F0000"
+    red: "#8F0000",
+    green: "#3FA69A"
   }
 };

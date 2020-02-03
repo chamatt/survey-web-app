@@ -18,12 +18,15 @@ import {
   QuestionTitleInputContainer,
   Body,
   OptionAction,
-  SurveyName
+  SurveyName,
+  SurveyInput
 } from "./styles";
 import SizedBox from "../../components/SizedBox";
 import Input from "../../components/Input";
 import Header from "../../components/Header";
 import { debounce } from "lodash";
+import api from "../../services/api";
+import { ToastContainer, toast } from "react-toastify";
 
 const mock = [
   {
@@ -37,12 +40,13 @@ const defaultValue = {
   options: ["option 1"]
 };
 
-export default function CreateSurvey() {
+export default function CreateSurvey({ history }) {
   const [questions, setQuestions] = useState([{ ...defaultValue }]);
   const [selectedQuestion, setSelectedQuestion] = useState(0);
 
   const [options, setOptions] = useState([]);
   const [questionTitle, setQuestionTitle] = useState("");
+  const [surveyTitle, setSurveyTitle] = useState("");
 
   useEffect(() => {
     setOptions(questions[selectedQuestion]?.options || []);
@@ -117,24 +121,63 @@ export default function CreateSurvey() {
     doDebounce();
   }, [questionTitle]);
 
-  console.log(questions);
+  const saveSurvey = (status = "IDLE") => {
+    const requestBody = {
+      title: surveyTitle,
+      description: "",
+      questions: questions,
+      status
+    };
+
+    api
+      .post("/surveys", requestBody)
+      .then(() => {
+        toast.success("☑ Survey created successfuly!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
+        history.push("/");
+      })
+      .catch(err => {
+        toast.error("Error creating survey: " + err, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
+      });
+  };
 
   return (
     <Container>
       <Header
         createSurvey={false}
         leftButtons={[
-          <Button color="primary">Save And Publish</Button>,
-          <Button color="purple">Save</Button>
+          <Button color="green" onClick={() => saveSurvey("ACTIVE")}>
+            Save And Publish
+          </Button>,
+          <Button color="purple" onClick={() => saveSurvey("IDLE")}>
+            Save
+          </Button>
         ]}
       />
 
       <SurveyName>
-        <QuestionTitleInput placeholder="Survey Name"></QuestionTitleInput>
+        <SurveyInput
+          placeholder="Survey Name"
+          value={surveyTitle}
+          onChange={e => setSurveyTitle(e.target.value)}
+        />
       </SurveyName>
       <Body>
         <SideBar>
-          <Button rightIcon="add" onClick={createNewQuestion}>
+          <Button color="green" rightIcon="add" onClick={createNewQuestion}>
             New Question
           </Button>
           {questions?.map((question, i) => (
@@ -188,7 +231,7 @@ export default function CreateSurvey() {
                 </OptionInputContainer>
               );
             })}
-            <Button rightIcon="add" onClick={addNewOption}>
+            <Button color="green" rightIcon="add" onClick={addNewOption}>
               Add
             </Button>
           </Card>

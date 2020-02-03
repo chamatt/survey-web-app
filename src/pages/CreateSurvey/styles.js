@@ -152,3 +152,9 @@ export const OptionAction = styled.div`
 export const SurveyName = styled.div`
   margin-top: 30px;
 `;
+
+export const SurveyInput = styled(QuestionTitleInput)`
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  text-align: center;
+`;
