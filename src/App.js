@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Survey from "./pages/Survey";
 import axiosInstance from "./services/api";
 import CreateSurvey from "./pages/CreateSurvey";
+import AdminRoute from "./components/ProtectedRoutes/adminProtected";
 import "materialize-css";
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
       <AuthContext.Provider value={{ user, setUser }}>
         <Router basename="/">
           <Switch>
-            <Route path="/create" component={CreateSurvey} />
+            <AdminRoute path="/create" component={CreateSurvey} />
             <Route exact path="/survey/:surveyId/complete" component={Survey} />
             <Route exact path="/survey/:surveyId" component={Survey} />
             <Route
