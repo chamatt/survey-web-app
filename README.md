@@ -28,21 +28,21 @@ open for responses will be accessed from the app's web page.
 
 ### General
 
-- [ ] Survey Coordinators and Survey Respondents can define, conduct, and
+- [x] Survey Coordinators and Survey Respondents can define, conduct, and
       view surveys and survey results from a common website
 - [x] Survey Coordinators can login to the app to access administrative
       functions, like defining a survey.
 
 ### Defining a Survey
 
-- [ ] Survey Coordinator can define a survey containing 1-10 multiple choice
+- [x] Survey Coordinator can define a survey containing 1-10 multiple choice
       questions.
-- [ ] Survey Coordinator can define 1-5 mutually exclusive selections to each
+- [x] Survey Coordinator can define 1-5 mutually exclusive selections to each
       question.
-- [ ] Survey Coordinator can enter a title for the survey.
+- [x] Survey Coordinator can enter a title for the survey.
 - [ ] Survey Coordinator can click a 'Cancel' button to return to the home
       page without saving the survey.
-- [ ] Survey Coordinator can click a 'Save' button save a survey.
+- [x] Survey Coordinator can click a 'Save' button save a survey.
 
 ### Conducting a Survey
 
@@ -73,7 +73,7 @@ open for responses will be accessed from the app's web page.
 
 ## Bonus features
 
-- [ ] Survey Respondents can create a unique account in the app
+- [x] Survey Respondents can create a unique account in the app
 - [x] Survey Respondents can login to the app
 - [ ] Survey Respondents cannot complete the same survey more than once
 - [ ] Survey Coordinators and Survey Respondents can view graphical
