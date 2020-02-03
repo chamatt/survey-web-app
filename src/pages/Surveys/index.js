@@ -11,6 +11,7 @@ export default function Surveys() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
   const { user } = useContext(AuthContext);
+
   const fetchData = () => {
     axiosInstace
       .get("/surveys/")

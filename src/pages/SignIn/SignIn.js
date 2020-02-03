@@ -16,7 +16,7 @@ export default function SignIn({ history }) {
 
   const login = async (email, password) => {
     try {
-      const response = await axiosInstance.post("/users/login", {
+      const response = await axiosInstance.post("/users/auth", {
         email,
         password
       });
