@@ -16,11 +16,14 @@ import {
   OptionInputContainer,
   I,
   QuestionTitleInputContainer,
-  Body
+  Body,
+  OptionAction,
+  SurveyName
 } from "./styles";
 import SizedBox from "../../components/SizedBox";
 import Input from "../../components/Input";
 import Header from "../../components/Header";
+import { debounce } from "lodash";
 
 const mock = [
   {
@@ -35,25 +38,38 @@ const defaultValue = {
 };
 
 export default function CreateSurvey() {
-  const [questions, setQuestions] = useState([defaultValue]);
+  const [questions, setQuestions] = useState([{ ...defaultValue }]);
   const [selectedQuestion, setSelectedQuestion] = useState(0);
 
   const [options, setOptions] = useState([]);
+  const [questionTitle, setQuestionTitle] = useState("");
 
   useEffect(() => {
     setOptions(questions[selectedQuestion]?.options || []);
   }, [selectedQuestion]);
 
   useEffect(() => {
-    setOptions(questions[selectedQuestion].options);
-  }, []);
+    setQuestionTitle(questions[selectedQuestion]?.title || "");
+  }, [selectedQuestion]);
 
   const createNewQuestion = () => {
-    setQuestions([...questions, defaultValue]);
+    setQuestions([...questions, { ...defaultValue }]);
   };
 
   const handleSelected = i => {
     setSelectedQuestion(i);
+  };
+
+  const updateOptions = (index, newOptions) => {
+    const newQuestions = [...questions];
+    newQuestions[index].options = newOptions || options;
+    setQuestions(questions);
+  };
+
+  const updateQuestionTitle = (index, newTitle) => {
+    const newQuestions = [...questions];
+    newQuestions[index].title = newTitle || questionTitle;
+    setQuestions(questions);
   };
 
   const handleOptionsChange = (e, index) => {
@@ -63,16 +79,59 @@ export default function CreateSurvey() {
     setOptions(newOptions);
   };
 
-  useEffect(() => {
+  const handleQuestionTitleChange = e => {
+    const { value } = e.target;
+    setQuestionTitle(value);
+  };
+
+  const addNewOption = () => {
+    const newOptions = [...options, "Option"];
+    setOptions(newOptions);
+  };
+  const deleteOption = index => {
+    const newOptions = [...options];
+    newOptions.splice(index, 1);
+    setOptions(newOptions);
+  };
+
+  const deleteQuestion = index => {
     const newQuestions = [...questions];
-    newQuestions[selectedQuestion].options = options;
-    setQuestions(questions);
+    newQuestions.splice(index, 1);
+    setQuestions(newQuestions);
+    setSelectedQuestion(0);
+  };
+
+  useEffect(() => {
+    const doDebounce = debounce(
+      () => updateOptions(selectedQuestion, options),
+      100
+    );
+    doDebounce();
   }, [options]);
+
+  useEffect(() => {
+    const doDebounce = debounce(
+      () => updateQuestionTitle(selectedQuestion, questionTitle),
+      100
+    );
+    doDebounce();
+  }, [questionTitle]);
+
+  console.log(questions);
 
   return (
     <Container>
-      <Header />
+      <Header
+        createSurvey={false}
+        leftButtons={[
+          <Button color="primary">Save And Publish</Button>,
+          <Button color="purple">Save</Button>
+        ]}
+      />
 
+      <SurveyName>
+        <QuestionTitleInput placeholder="Survey Name"></QuestionTitleInput>
+      </SurveyName>
       <Body>
         <SideBar>
           <Button rightIcon="add" onClick={createNewQuestion}>
@@ -95,26 +154,43 @@ export default function CreateSurvey() {
         <QuestionCard>
           <Card>
             <QuestionTitleInputContainer>
-              <QuestionTitleInput label="Question"></QuestionTitleInput>
+              <QuestionTitleInput
+                // onBlur={() => updateQuestionTitle(selectedQuestion)}
+                onChange={handleQuestionTitleChange}
+                value={questionTitle}
+                // label="Question"
+                placeholder="question"
+              ></QuestionTitleInput>
               <QuestionAction>
-                <Button color="danger">
+                <Button
+                  color="danger"
+                  onClick={() => deleteQuestion(selectedQuestion)}
+                >
                   <I className="material-icons left">cancel</I>
                   Delete Question
                 </Button>
               </QuestionAction>
             </QuestionTitleInputContainer>
-            {options.map(op => {
+            {options.map((op, index) => {
               return (
                 <OptionInputContainer>
                   <I className="material-icons left">menu</I>
                   <OptionInput
                     placeholder="Option"
                     value={op}
-                    onChange={(e, i) => handleOptionsChange(e, i)}
+                    onChange={e => handleOptionsChange(e, index)}
+                    // onBlur={() => updateOptions(index)}
                   ></OptionInput>
+
+                  <OptionAction onClick={() => deleteOption(index)}>
+                    <I className="material-icons left">cancel</I>
+                  </OptionAction>
                 </OptionInputContainer>
               );
             })}
+            <Button rightIcon="add" onClick={addNewOption}>
+              Add
+            </Button>
           </Card>
         </QuestionCard>
       </Body>
