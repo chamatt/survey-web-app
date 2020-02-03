@@ -33,6 +33,8 @@ export const SideBar = styled.div`
   /* background-color: #ff00000f; */
   margin-left: 15px;
   margin-right: 15px;
+
+  text-overflow: ellipsis;
 `;
 export const SideBarItem = styled.div`
   display: flex;
@@ -141,4 +143,12 @@ export const QuestionTitleInputContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const OptionAction = styled.div`
+  cursor: pointer;
+`;
+
+export const SurveyName = styled.div`
+  margin-top: 30px;
 `;
