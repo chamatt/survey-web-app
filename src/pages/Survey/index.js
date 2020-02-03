@@ -148,7 +148,7 @@ export default function Survey({ history, match }) {
           </BackLink>
 
           <Head>
-            <Question>Survey Complete</Question>
+            <Question>Survey Completed</Question>
             <SizedBox height="20px"></SizedBox>
             <VectorContainer src={done_vector} />
             <SizedBox height="20px"></SizedBox>

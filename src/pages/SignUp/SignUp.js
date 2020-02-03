@@ -17,7 +17,7 @@ export default function SignUp({ history }) {
         <BackLink onClick={() => history.push("/login")}>
           Back to Login
         </BackLink>
-        <form class="col s12">
+        <form className="col s12">
           <Input
             id="email"
             name="email"

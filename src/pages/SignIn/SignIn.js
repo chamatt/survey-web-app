@@ -13,7 +13,7 @@ export default function SignIn({ history }) {
       <VectorContainer src={signin_vector}></VectorContainer>
       <Title>Sign In</Title>
       <Card>
-        <form class="col s12">
+        <form className="col s12">
           <Input
             id="email"
             name="email"
