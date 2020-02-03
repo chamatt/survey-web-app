@@ -17,7 +17,9 @@ function Header({ history }) {
   return (
     <Container>
       <LeftContainer>
-        <Button>Create New Survey</Button>
+        <Button onClick={() => history.push("/create")}>
+          Create New Survey
+        </Button>
       </LeftContainer>
       <Center></Center>
       <RightContainer>
