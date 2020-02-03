@@ -24,20 +24,13 @@ import {
 import SizedBox from "../../components/SizedBox";
 import Input from "../../components/Input";
 import Header from "../../components/Header";
-import { debounce } from "lodash";
+import { debounce, uniqBy } from "lodash";
 import api from "../../services/api";
-import { ToastContainer, toast } from "react-toastify";
-
-const mock = [
-  {
-    title: "Question 1",
-    options: ["option 1", "option 2", "option 3"]
-  }
-];
+import { toast } from "react-toastify";
 
 const defaultValue = {
-  title: "Question Name",
-  options: ["option 1"]
+  title: "",
+  options: ["ion 1"]
 };
 
 export default function CreateSurvey({ history }) {
@@ -57,6 +50,10 @@ export default function CreateSurvey({ history }) {
   }, [selectedQuestion]);
 
   const createNewQuestion = () => {
+    if (questions.length >= 10) {
+      toast.error("You can only have up to 10 questions");
+      return;
+    }
     setQuestions([...questions, { ...defaultValue }]);
   };
 
@@ -89,16 +86,28 @@ export default function CreateSurvey({ history }) {
   };
 
   const addNewOption = () => {
+    if (options.length >= 5) {
+      toast.error("You can only add a maximum of 5 options");
+      return;
+    }
     const newOptions = [...options, "Option"];
     setOptions(newOptions);
   };
   const deleteOption = index => {
+    if (options.length === 1) {
+      toast.error("You need at least one option");
+      return;
+    }
     const newOptions = [...options];
     newOptions.splice(index, 1);
     setOptions(newOptions);
   };
 
   const deleteQuestion = index => {
+    if (questions.length === 1) {
+      toast.error("You need at least one question");
+      return;
+    }
     const newQuestions = [...questions];
     newQuestions.splice(index, 1);
     setQuestions(newQuestions);
@@ -125,32 +134,27 @@ export default function CreateSurvey({ history }) {
     const requestBody = {
       title: surveyTitle,
       description: "",
-      questions: questions,
+      questions: questions.map(q => ({
+        ...q,
+        options: uniqBy(q.options, a => a)
+      })),
       status
     };
+
+    if (questions.some(q => !q.title))
+      toast.error("Error: Some question(s) are untitled");
 
     api
       .post("/surveys", requestBody)
       .then(() => {
-        toast.success("☑ Survey created successfuly!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true
-        });
+        toast.success("☑ Survey created successfuly!");
         history.push("/");
       })
       .catch(err => {
-        toast.error("Error creating survey: " + err, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true
-        });
+        toast.error(
+          "Error creating survey: " + err?.response?.data?.message ||
+            err?.response?.data
+        );
       });
   };
 
@@ -187,7 +191,7 @@ export default function CreateSurvey({ history }) {
             >
               <QuestionItemContainer>
                 {/* <QuestionNumber>1 - </QuestionNumber> */}
-                <QuestionTitle>{question.title}</QuestionTitle>
+                <QuestionTitle>{question.title || "Untitled"}</QuestionTitle>
               </QuestionItemContainer>
             </SideBarItem>
           ))}
