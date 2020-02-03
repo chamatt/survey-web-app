@@ -24,18 +24,17 @@ const SurveyCard = ({
   description,
   numQuestions,
   status,
+  refetchData = () => {},
   surveyId = "123"
 }) => {
   const { user } = useContext(AuthContext);
   const isIdle = status?.toUpperCase() === "IDLE";
   const isActive = status?.toUpperCase() === "ACTIVE";
   const isAdmin = user?.data?.role?.toUpperCase() === "COORDINATOR";
-  const closeSurvey = () => {
+  const changeSurveyStatus = status => {
     axiosInstace
-      .put("/surveys/status/" + surveyId, {
-        status: "CLOSED"
-      })
-      .then(d => history.push("/"))
+      .put("/surveys/status/" + surveyId, { status })
+      .then(refetchData)
       .catch(console.log);
   };
 
@@ -62,7 +61,7 @@ const SurveyCard = ({
           <Button
             color={"primary"}
             rounded
-            onClick={() => history.push(`/survey/${surveyId}`)}
+            onClick={() => changeSurveyStatus("ACTIVE")}
           >
             {"Open Survey"}
           </Button>
@@ -78,7 +77,11 @@ const SurveyCard = ({
         {isAdmin && isActive && (
           <>
             <SizedBox height="15px" />
-            <Button color={"red"} rounded onClick={closeSurvey}>
+            <Button
+              color={"red"}
+              rounded
+              onClick={() => changeSurveyStatus("CLOSED")}
+            >
               {"Close Survey"}
             </Button>
           </>

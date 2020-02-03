@@ -11,8 +11,7 @@ export default function Surveys() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
   const { user } = useContext(AuthContext);
-
-  useEffect(() => {
+  const fetchData = () => {
     axiosInstace
       .get("/surveys/")
       .then(response => {
@@ -24,7 +23,9 @@ export default function Surveys() {
       .catch(({ response }) => {
         setLoading(false);
       });
-  }, [user]);
+  };
+
+  useEffect(fetchData, [user]);
 
   return (
     <Container>
@@ -40,8 +41,9 @@ export default function Surveys() {
               key={survey.id}
               title={survey.title}
               surveyId={survey.id}
-              numQuestions={data.length}
+              numQuestions={survey.questions.length}
               status={survey.status}
+              refetchData={fetchData}
             />
           ))}
       </SurveyGrid>
