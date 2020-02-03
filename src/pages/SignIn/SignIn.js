@@ -10,8 +10,8 @@ import axiosInstance from "../../services/api";
 
 export default function SignIn({ history }) {
   const { setUser, user } = useContext(AuthContext);
-  const [email, setEmail] = useState("email@email.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [error, setError] = useState();
 
   const login = async (email, password) => {
