@@ -9,11 +9,21 @@ export const Container = styled(BaseContainer)`
   justify-content: flex-start;
   align-items: center;
   flex: 1;
-  flex-direction: row;
+  flex-direction: column;
   background-color: ${props => props.theme.colors.backgroundColor};
   max-width: 1200px;
   width: 100%;
 `;
+
+export const Body = styled.div`
+  display: flex;
+  justify-content: center;
+  /* flex: 1; */
+  flex-direction: row;
+  width: 100%;
+  margin-top: 50px;
+`;
+
 export const SideBar = styled.div`
   display: flex;
   flex-direction: column;
