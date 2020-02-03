@@ -8,12 +8,15 @@ import "materialize-css/dist/css/materialize.min.css";
 import Surveys from "./pages/Surveys";
 import SignUp from "./pages/SignUp/SignUp";
 import Survey from "./pages/Survey";
+import CreateSurvey from "./pages/CreateSurvey";
+import "materialize-css";
 
 function App() {
   return (
     <ThemeProvider theme={themes}>
       <Router basename="/">
         <Switch>
+          <Route path="/create" component={CreateSurvey} />
           <Route exact path="/survey/:surveyId/complete" component={Survey} />
           <Route exact path="/survey/:surveyId" component={Survey} />
           <Route

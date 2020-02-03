@@ -21,7 +21,7 @@ export default function Surveys() {
       <SizedBox height="20px"></SizedBox>
       <SurveyGrid>
         {!isLoading &&
-          data.map(survey => (
+          data?.map(survey => (
             <SurveyCard
               title={survey.title}
               surveyId={survey.id}
