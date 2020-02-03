@@ -9,6 +9,7 @@ export default function Button({
   large,
   block,
   disabled,
+  className,
   ...rest
 }) {
   return (
@@ -16,7 +17,7 @@ export default function Button({
       {...rest}
       block={block}
       className={`btn waves-effect waves-light z-depth-0 ${large &&
-        "btn-large"} ${disabled && "disabled"}`}
+        "btn-large"} ${disabled && "disabled"} ${className}`}
     >
       {leftIcon && <i className="material-icons left">{leftIcon}</i>}
       {children}
