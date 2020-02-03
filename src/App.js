@@ -8,7 +8,6 @@ import "materialize-css/dist/css/materialize.min.css";
 import Surveys from "./pages/Surveys";
 import SignUp from "./pages/SignUp/SignUp";
 import Survey from "./pages/Survey";
-import axiosInstance from "./services/api";
 import CreateSurvey from "./pages/CreateSurvey";
 import AdminRoute from "./components/ProtectedRoutes/adminProtected";
 import "materialize-css";
@@ -20,8 +19,6 @@ function App() {
     if (userStorage) {
       userStorage = JSON.parse(userStorage);
       setUser(userStorage);
-      axiosInstance.defaults.headers.common["Authorization"] =
-        userStorage.token;
     }
   }, []);
 

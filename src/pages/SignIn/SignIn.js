@@ -23,8 +23,9 @@ export default function SignIn({ history }) {
 
       console.log(response);
 
-      axiosInstance.defaults.headers.common["Authorization"] =
-        response.data.token;
+      axiosInstance.defaults.headers.common = {
+        Authorization: `Bearer ${response.data.token}`
+      };
 
       const userData = {
         ...user,

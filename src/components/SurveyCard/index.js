@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   SurveyContainer,
@@ -14,14 +14,31 @@ import {
 } from "./styles";
 import Button from "../Button";
 import { withRouter } from "react-router-dom";
+import AuthContext from "../../contexts/auth";
+import axiosInstace from "../../services/api";
+import SizedBox from "../../components/SizedBox";
 
 const SurveyCard = ({
   history,
   title = "IT Executive Compensation Study",
   description,
   numQuestions,
+  status,
   surveyId = "123"
 }) => {
+  const { user } = useContext(AuthContext);
+  const isIdle = status?.toUpperCase() === "IDLE";
+  const isActive = status?.toUpperCase() === "ACTIVE";
+  const isAdmin = user?.data?.role?.toUpperCase() === "COORDINATOR";
+  const closeSurvey = () => {
+    axiosInstace
+      .put("/surveys/status/" + surveyId, {
+        status: "CLOSED"
+      })
+      .then(d => history.push("/"))
+      .catch(console.log);
+  };
+
   return (
     <SurveyContainer>
       <Heading>
@@ -41,13 +58,31 @@ const SurveyCard = ({
         </Description>
       </Body>
       <Footer>
-        <Button
-          color="purple"
-          rounded
-          onClick={() => history.push(`/survey/${surveyId}`)}
-        >
-          Take Survey
-        </Button>
+        {isIdle ? (
+          <Button
+            color={"primary"}
+            rounded
+            onClick={() => history.push(`/survey/${surveyId}`)}
+          >
+            {"Open Survey"}
+          </Button>
+        ) : (
+          <Button
+            color={isActive ? "purple" : "green"}
+            rounded
+            onClick={() => history.push(`/survey/${surveyId}`)}
+          >
+            {isActive ? "Take Survey" : "See Results"}
+          </Button>
+        )}
+        {isAdmin && isActive && (
+          <>
+            <SizedBox height="15px" />
+            <Button color={"red"} rounded onClick={closeSurvey}>
+              {"Close Survey"}
+            </Button>
+          </>
+        )}
       </Footer>
     </SurveyContainer>
   );

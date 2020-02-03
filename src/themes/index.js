@@ -6,6 +6,7 @@ export default {
     danger: "#9B291F",
     purple: "#8e44ad",
     textNormal: "#3C4659",
-    textLight: "#ADADC4"
+    textLight: "#ADADC4",
+    red: "#8F0000"
   }
 };

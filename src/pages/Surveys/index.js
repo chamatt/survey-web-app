@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { Container, SurveyGrid, Title } from "./styles";
 import SurveyCard from "../../components/SurveyCard";
 import Header from "../../components/Header";
 import SizedBox from "../../components/SizedBox";
 import axiosInstace from "../../services/api";
+import AuthContext from "../../contexts/auth";
 
 export default function Surveys() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     axiosInstace
@@ -16,11 +18,13 @@ export default function Surveys() {
       .then(response => {
         setLoading(false);
         setData(response.data);
+
+        console.log(response.data);
       })
       .catch(({ response }) => {
         setLoading(false);
       });
-  }, []);
+  }, [user]);
 
   return (
     <Container>
@@ -33,9 +37,11 @@ export default function Surveys() {
         {!loading &&
           data?.map(survey => (
             <SurveyCard
+              key={survey.id}
               title={survey.title}
               surveyId={survey.id}
               numQuestions={data.length}
+              status={survey.status}
             />
           ))}
       </SurveyGrid>
