@@ -41,7 +41,7 @@ export default function Surveys() {
               key={survey.id}
               title={survey.title}
               surveyId={survey.id}
-              numQuestions={data.length}
+              numQuestions={survey.questions.length}
               status={survey.status}
               refetchData={fetchData}
             />
