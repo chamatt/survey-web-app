@@ -13,8 +13,9 @@ export default function Surveys() {
   useEffect(() => {
     axiosInstace
       .get("/surveys/")
-      .then(() => {
+      .then(response => {
         setLoading(false);
+        setData(response.data);
       })
       .catch(({ response }) => {
         setLoading(false);
