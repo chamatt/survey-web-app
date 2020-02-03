@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Container, Title, Buttons, Card } from "../SignIn/styles";
-import M from "materialize-css";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import SizedBox from "../../components/SizedBox";

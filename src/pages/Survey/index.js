@@ -80,7 +80,10 @@ export default function Survey({ history, match }) {
             <SizedBox height="20px"></SizedBox>
             <VectorContainer src={bermuda_welcome} />
             <SizedBox height="20px"></SizedBox>
+            <div>{questions.length} QUESTIONS</div>
+            <div> {0.25 * questions.length} MINUTES</div>
           </Head>
+
           <Buttons>
             <Button
               large

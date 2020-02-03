@@ -18,15 +18,16 @@ import { withRouter } from "react-router-dom";
 const SurveyCard = ({
   history,
   title = "IT Executive Compensation Study",
-  description = "Eae pessoal tudo bem aqui quem fala é o Edu. Eae pessoal tudo bem",
+  description,
+  numQuestions,
   surveyId = "123"
 }) => {
   return (
     <SurveyContainer>
       <Heading>
-        <ImgContainer>
+        {/* <ImgContainer>
           <Img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRr0hAkIFYIpAqMCCRIRfZDs5lzfY6FllALV6Wy1FXL9xca6WFZ" />
-        </ImgContainer>
+        </ImgContainer> */}
         <TitleContainer>
           <Category>
             <i className="material-icons left">event_note</i>Survey
@@ -36,8 +37,7 @@ const SurveyCard = ({
       </Heading>
       <Body>
         <Description>
-          Eae pessoal tudo bem aqui quem fala é o Edu. Eae pessoal tudo bem
-          aqui. quem fala é o Edu Eae pessoal tudo bem aqui quem fala é o Edu
+          {numQuestions} questions ({0.25 * numQuestions} minutes)
         </Description>
       </Body>
       <Footer>

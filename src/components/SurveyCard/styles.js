@@ -28,6 +28,7 @@ export const Title = styled.p`
   color: ${props => props.theme.colors.textNormal};
   font-size: 1.3rem;
   margin: 0;
+  text-transform: capitalize;
 `;
 
 export const ImgContainer = styled.div`
@@ -53,7 +54,7 @@ export const Heading = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  height: 150px;
+  /* height: 150px; */
   /* padding: 10px; */
   overflow: hidden;
 `;
@@ -62,7 +63,7 @@ export const TitleContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  height: 150px;
+  /* height: 150px; */
 `;
 
 export const Body = styled.div`

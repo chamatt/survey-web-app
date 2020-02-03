@@ -20,22 +20,14 @@ export default function Surveys() {
       <Title>Surveys</Title>
       <SizedBox height="20px"></SizedBox>
       <SurveyGrid>
-        <SurveyCard surveyId="12312312312" />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
-        <SurveyCard />
+        {!isLoading &&
+          data.map(survey => (
+            <SurveyCard
+              title={survey.title}
+              surveyId={survey.id}
+              numQuestions={data.length}
+            />
+          ))}
       </SurveyGrid>
     </Container>
   );
