@@ -12,6 +12,7 @@ import done_vector from "../../assets/img/task-done.png";
 import bermuda_welcome from "../../assets/img/bermuda-welcome.png";
 import useFetch from "react-fetch-hook";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 export default function Survey({ history, match }) {
   const [selections, setSelections] = useState({});
@@ -62,9 +63,12 @@ export default function Survey({ history, match }) {
     api
       .post("/entries", requestBody)
       .then(() => {
+        toast.success("☑ Survey submitted successfuly!");
         history.push("/");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        toast.error("Error submiting survey: " + err?.response?.data?.message);
+      });
   };
 
   return (

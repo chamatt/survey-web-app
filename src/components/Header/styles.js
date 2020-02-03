@@ -10,6 +10,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 0 30px;
   min-width: 100%;
+  margin-top: 30px;
 `;
 
 export const LeftContainer = styled.div`
