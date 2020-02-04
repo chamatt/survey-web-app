@@ -26,6 +26,7 @@ import Header from "../../components/Header";
 import { debounce, uniqBy } from "lodash";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { URL_ROOT } from "../../utils/constants";
 
 const defaultValue = {
   title: "",
@@ -154,7 +155,7 @@ export default function CreateSurvey({ history }) {
       .post("/surveys", requestBody)
       .then(() => {
         toast.success("☑ Survey created successfuly!");
-        history.push("/");
+        history.push(URL_ROOT);
       })
       .catch(err => {
         toast.error(
@@ -196,7 +197,6 @@ export default function CreateSurvey({ history }) {
               onClick={() => handleSelected(i)}
             >
               <QuestionItemContainer>
-                {/* <QuestionNumber>1 - </QuestionNumber> */}
                 <QuestionTitle>{question.title || "Untitled"}</QuestionTitle>
               </QuestionItemContainer>
             </SideBarItem>
@@ -208,11 +208,10 @@ export default function CreateSurvey({ history }) {
           <Card>
             <QuestionTitleInputContainer>
               <QuestionTitleInput
-                // onBlur={() => updateQuestionTitle(selectedQuestion)}
                 onChange={handleQuestionTitleChange}
                 value={questionTitle}
-                // label="Question"
-                placeholder="question"
+                placeholder="Question Title"
+                maxLength="250"
               ></QuestionTitleInput>
               <QuestionAction>
                 <Button
@@ -232,7 +231,7 @@ export default function CreateSurvey({ history }) {
                     placeholder="Option"
                     value={op}
                     onChange={e => handleOptionsChange(e, index)}
-                    // onBlur={() => updateOptions(index)}
+                    maxLength="250"
                   ></OptionInput>
 
                   <OptionAction onClick={() => deleteOption(index)}>

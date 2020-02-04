@@ -9,9 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: ${props => props.theme.colors.backgroundColor};
   max-width: 1200px;
-  /* margin: 0 auto; */
   width: 100%;
-  /* margin-top: 50px; */
   margin-bottom: 50px;
 `;
 
@@ -26,7 +24,6 @@ export const SurveyGrid = styled.div`
 
 export const Title = styled.h2`
   color: ${props => props.theme.colors.secondary};
-  /* text-transform: uppercase; */
 `;
 
 export const EmptyWarning = styled.div`

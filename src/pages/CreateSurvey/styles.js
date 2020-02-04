@@ -18,7 +18,6 @@ export const Container = styled(BaseContainer)`
 export const Body = styled.div`
   display: flex;
   justify-content: center;
-  /* flex: 1; */
   flex-direction: row;
   width: 100%;
   margin-top: 50px;
@@ -30,7 +29,6 @@ export const SideBar = styled.div`
   justify-content: flex-start;
   min-height: 600px;
   flex: 1;
-  /* background-color: #ff00000f; */
   margin-left: 15px;
   margin-right: 15px;
 
@@ -50,7 +48,7 @@ export const SideBarItem = styled.div`
   ${props =>
     props.selected
       ? `border-left: 4px solid ${props.theme.colors.secondary};
-        color: ${props.theme.colors.secondary}; 
+        color: ${props.theme.colors.secondary};
   font-weight: bold;`
       : `border-left: 4px solid ${props.theme.colors.secondary}44;
       color: ${props.theme.colors.secondary}44;
@@ -101,8 +99,6 @@ export const QuestionTitleInput = styled(Input)`
   & + label {
     font-size: 30px;
     line-height: 10px;
-    /* font-size: 16px; */
-    /* line-height: 30px; */
     pointer-events: none;
     padding-bottom: 5px;
   }

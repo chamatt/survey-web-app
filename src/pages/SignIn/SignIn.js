@@ -7,6 +7,7 @@ import VectorContainer from "../../components/VectorContainer";
 import signin_vector from "../../assets/img/flame-sign-up.png";
 import AuthContext from "../../contexts/auth";
 import axiosInstance from "../../services/api";
+import { URL_ROOT, URL_REGISTER } from "../../utils/constants";
 
 export default function SignIn({ history }) {
   const { setUser, user } = useContext(AuthContext);
@@ -38,7 +39,7 @@ export default function SignIn({ history }) {
 
       localStorage.setItem("user", JSON.stringify(userData));
 
-      history.push("/");
+      history.push(URL_ROOT);
     } catch ({ response }) {
       console.log(response);
       setError(response?.data?.message || "Unexpected error");
@@ -58,7 +59,7 @@ export default function SignIn({ history }) {
             name="email"
             icon="mail_outline"
             type="email"
-            label="Email Address"
+            label="Email"
             value={email}
             onChange={e => setError() || setEmail(e.target.value)}
           ></Input>
@@ -77,7 +78,7 @@ export default function SignIn({ history }) {
         <Buttons>
           <Button onClick={() => login(email, password)}>Sign In</Button>
           <SizedBox height="20px" />
-          <Button onClick={() => history.push("/register")} color="purple">
+          <Button onClick={() => history.push(URL_REGISTER)} color="purple">
             Create Account
           </Button>
         </Buttons>

@@ -14,6 +14,7 @@ import AdminRoute from "./components/ProtectedRoutes/adminProtected";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "materialize-css";
+import { URL_ROOT, URL_CREATE, URL_REGISTER, URL_LOGIN, URL_SURVEY, URL_RESULTS } from "./utils/constants";
 
 function App() {
   const [user, setUser] = useState({ isLoggedIn: false });
@@ -28,20 +29,20 @@ function App() {
   return (
     <ThemeProvider theme={themes}>
       <AuthContext.Provider value={{ user, setUser }}>
-        <Router basename="/">
+        <Router basename={URL_ROOT}>
           <Switch>
-            <AdminRoute path="/create" component={CreateSurvey} />
-            <Route exact path="/survey/:surveyId/complete" component={Survey} />
-            <Route exact path="/survey/:surveyId" component={Survey} />
+            <AdminRoute path={URL_CREATE} component={CreateSurvey} />
+            <Route exact path={`${URL_SURVEY}/:surveyId/complete`} component={Survey} />
+            <Route exact path={`${URL_SURVEY}/:surveyId`} component={Survey} />
             <Route
               exact
-              path="/survey/:surveyId/questions/:questionId"
+              path={`${URL_SURVEY}/:surveyId/questions/:questionId`}
               component={Survey}
             />
-            <Route path="/register" component={SignUp} />
-            <Route path="/results/:id" component={Results} exact />
-            <Route path="/login" component={SignIn} />
-            <Route path="/" component={Surveys} />
+            <Route path={URL_REGISTER} component={SignUp} />
+            <Route path={`${URL_RESULTS}/:id`} component={Results} exact />
+            <Route path={URL_LOGIN} component={SignIn} />
+            <Route path={URL_ROOT} component={Surveys} />
           </Switch>
         </Router>
         <ToastContainer />

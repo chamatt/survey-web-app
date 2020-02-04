@@ -5,5 +5,4 @@ export const Container = styled.div`
   align-self: center;
   justify-self: center;
   flex: 1;
-  /* min-height: 100vh; */
 `;

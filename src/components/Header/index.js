@@ -16,6 +16,8 @@ import AuthContext from "../../contexts/auth";
 import axiosInstance from "../../services/api";
 import VectorContainer from "../../components/VectorContainer";
 import signin_vector from "../../assets/img/flame-sign-up.png";
+import user_profile from "../../assets/img/user.jpg";
+import { COORDINATOR, URL_ROOT, URL_LOGIN, URL_CREATE } from '../../utils/constants';
 
 function Header({
   history,
@@ -25,7 +27,7 @@ function Header({
   leftButtons
 }) {
   const { user, setUser } = useContext(AuthContext);
-  const isAdmin = user?.data?.role?.toUpperCase() === "COORDINATOR";
+  const isAdmin = user?.data?.role?.toUpperCase() === COORDINATOR;
   const logout = () => {
     localStorage.removeItem("user");
     setUser({ isLoggedIn: false });
@@ -33,17 +35,17 @@ function Header({
   };
 
   const userInfo = !user?.isLoggedIn ? (
-    <Card onClick={() => history.push("/login")}>
+    <Card onClick={() => history.push(URL_LOGIN)}>
       <User>Login</User>
       <Avatar
         size="25px"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTK1J-i3ZrWnicHdauDJ1ZUN9laTSlb1xG0bhlf9a484BGIL2JL"
+        src={user_profile}
       ></Avatar>
     </Card>
   ) : (
     <p style={{ color: "white" }}>
-      Welcome {user.data.name}.{" "}
-      <LogoutButton onClick={logout}>Logout.</LogoutButton>
+      Welcome {user.data.name}!{" "}
+      <LogoutButton onClick={logout}>{" "}Logout</LogoutButton>
     </p>
   );
 
@@ -51,11 +53,11 @@ function Header({
     <Container>
       <LeftContainer>
         {showHome ? (
-          <LogoutButton onClick={() => history.push("/")}>Home</LogoutButton>
+          <LogoutButton onClick={() => history.push(URL_ROOT)}>Home</LogoutButton>
         ) : (
           createSurvey &&
           isAdmin && (
-            <Button color="green" onClick={() => history.push("/create")}>
+            <Button color="green" onClick={() => history.push(URL_CREATE)}>
               Create New Survey
             </Button>
           )
@@ -67,7 +69,7 @@ function Header({
           clickable
           size="50px"
           src={signin_vector}
-          onClick={() => history.push("/")}
+          onClick={() => history.push(URL_ROOT)}
         ></VectorContainer>
       </Center>
       <RightContainer>{showUser && userInfo}</RightContainer>

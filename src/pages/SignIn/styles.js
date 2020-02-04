@@ -16,7 +16,6 @@ export const Container = styled(BaseContainer)`
 
 export const Title = styled.h2`
   color: ${props => props.theme.colors.secondary};
-  /* text-transform: uppercase; */
 `;
 
 export const Buttons = styled.div`

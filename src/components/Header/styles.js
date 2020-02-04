@@ -52,5 +52,5 @@ export const User = styled.p`
 
 export const LogoutButton = styled.span`
   cursor: pointer;
-  color: white;
+  color: red;
 `;
