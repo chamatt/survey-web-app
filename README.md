@@ -25,6 +25,8 @@ Password: 123456
 ## Running the app locally
 
 ```
+git clone https://github.com/tosnextly/survey-web-app.git
+yarn
 yarn start
 ```
 
