@@ -27,12 +27,8 @@ export default function Survey({ history, match }) {
 
   const { questions, ...survey } = data;
 
-  console.log(questions, survey);
-
   const goToNextPage = () => {
     const nextPageId = getNextPage(getQuestionId(match.url), questions);
-    console.log({ nextPageId });
-    console.log(getQuestionId(match.url), questions, nextPageId);
     if (nextPageId) {
       history.push(
         `${getUrlWithoutLastPart(match.url)}/${getNextPage(
@@ -57,8 +53,6 @@ export default function Survey({ history, match }) {
         answer
       })
     );
-
-    console.log(requestBody);
 
     api
       .post("/entries", requestBody)
@@ -118,6 +112,7 @@ export default function Survey({ history, match }) {
             <SizedBox height="20px" />
             {question.options.map(text => (
               <AnswerItem
+                key={question.id}
                 questionId={question.id}
                 answerId={text}
                 text={text}

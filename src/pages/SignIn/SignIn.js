@@ -22,8 +22,6 @@ export default function SignIn({ history }) {
         password
       });
 
-      console.log(response);
-      console.log("kfjdlkf");
       axiosInstance.defaults.headers.common = {
         Authorization: `Bearer ${response.data.token}`
       };
@@ -41,12 +39,9 @@ export default function SignIn({ history }) {
 
       history.push(URL_ROOT);
     } catch ({ response }) {
-      console.log(response);
       setError(response?.data?.message || "Unexpected error");
     }
   };
-
-  console.log(email, password);
 
   return (
     <Container>

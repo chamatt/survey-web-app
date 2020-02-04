@@ -15,7 +15,7 @@ import { withRouter } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
 import axiosInstace from "../../services/api";
 import SizedBox from "../../components/SizedBox";
-import { COORDINATOR, IDLE, ACTIVE, URL_RESULTS } from '../../utils/constants';
+import { COORDINATOR, IDLE, ACTIVE, URL_RESULTS, CLOSED } from '../../utils/constants';
 
 const SurveyCard = ({
   history,
@@ -34,7 +34,7 @@ const SurveyCard = ({
     axiosInstace
       .put("/surveys/status/" + surveyId, { status })
       .then(refetchData)
-      .catch(console.log);
+      .catch();
   };
 
   return (
@@ -57,7 +57,7 @@ const SurveyCard = ({
           <Button
             color={"primary"}
             rounded
-            onClick={() => changeSurveyStatus("ACTIVE")}
+            onClick={() => changeSurveyStatus(ACTIVE)}
           >
             {"Open Survey"}
           </Button>
@@ -76,7 +76,7 @@ const SurveyCard = ({
             <Button
               color={"red"}
               rounded
-              onClick={() => changeSurveyStatus("CLOSED")}
+              onClick={() => changeSurveyStatus(CLOSED)}
             >
               {"Close Survey"}
             </Button>

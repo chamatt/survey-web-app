@@ -16,7 +16,7 @@ export default function Survey({ history, match }) {
           <>
             <Question>{"Question: " + question.title}</Question>
             {question?.options?.map((option, i) => (
-              <AnswerItem />
+              <AnswerItem key={i} />
             ))}
           </>
         );
@@ -28,10 +28,9 @@ export default function Survey({ history, match }) {
     axiosInstance
       .get(`/surveys/${match.params.id}/result`)
       .then(response => {
-        console.log(response);
         setData(response?.data);
       })
-      .catch(console.log);
+      .catch();
   }, [match.params.id]);
 
   return (

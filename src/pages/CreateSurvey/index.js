@@ -25,7 +25,7 @@ import Header from "../../components/Header";
 import { debounce, uniqBy } from "lodash";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { URL_ROOT } from "../../utils/constants";
+import { URL_ROOT, ACTIVE, IDLE } from "../../utils/constants";
 
 const defaultValue = {
   title: "",
@@ -129,7 +129,7 @@ export default function CreateSurvey({ history }) {
     doDebounce();
   }, [questionTitle]);
 
-  const saveSurvey = (status = "IDLE") => {
+  const saveSurvey = (status = IDLE) => {
     const requestBody = {
       title: surveyTitle,
       description: "",
@@ -162,10 +162,10 @@ export default function CreateSurvey({ history }) {
       <Header
         createSurvey={false}
         leftButtons={[
-          <Button color="green" onClick={() => saveSurvey("ACTIVE")}>
+          <Button key={`${ACTIVE}-BUTTON`} color="green" onClick={() => saveSurvey(ACTIVE)}>
             Save And Publish
           </Button>,
-          <Button color="purple" onClick={() => saveSurvey("IDLE")}>
+          <Button key={`${IDLE}-BUTTON`} color="purple" onClick={() => saveSurvey(IDLE)}>
             Save
           </Button>
         ]}
@@ -185,6 +185,7 @@ export default function CreateSurvey({ history }) {
           </Button>
           {questions?.map((question, i) => (
             <SideBarItem
+              key={i}
               selected={selectedQuestion === i}
               onClick={() => handleSelected(i)}
             >
@@ -217,7 +218,7 @@ export default function CreateSurvey({ history }) {
             </QuestionTitleInputContainer>
             {options.map((op, index) => {
               return (
-                <OptionInputContainer>
+                <OptionInputContainer key={index}>
                   <I className="material-icons left">menu</I>
                   <OptionInput
                     placeholder="Option"

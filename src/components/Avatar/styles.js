@@ -6,6 +6,7 @@ export const Container = styled.div`
   height: ${props => props.size};
   overflow: hidden;
 `;
+
 export const Img = styled.img`
   height: 100%;
   width: 100%;

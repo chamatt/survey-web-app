@@ -31,8 +31,6 @@ export default function Surveys() {
         setClosedSurveys(response?.data?.filter(s => s.status === CLOSED));
         setOpenSurveys(response?.data?.filter(s => s.status === ACTIVE));
         setIdleSurveys(response?.data?.filter(s => s.status === IDLE));
-
-        console.log(response.data);
       })
       .catch(({ response }) => {
         setLoading(false);
