@@ -65,8 +65,6 @@ export default function Survey({ history, match }) {
       });
   };
 
-  console.log(data);
-
   return (
     <Container>
       <Header />
@@ -78,8 +76,8 @@ export default function Survey({ history, match }) {
             <SizedBox height="20px"></SizedBox>
             <VectorContainer src={bermuda_welcome} />
             <SizedBox height="20px"></SizedBox>
-            <div>{questions.length} QUESTIONS</div>
-            <div> {0.25 * questions.length} MINUTES</div>
+            <div>{questions.length} QUESTION{questions.length !== 1 ? "S" : ""}</div>
+            <div> {0.25 * questions.length} MINUTE{questions.length !== 4 ? "S" : ""}</div>
           </Head>
           <p>
             {!isLoading && data.taken && "You already completed this survey"}
@@ -120,6 +118,7 @@ export default function Survey({ history, match }) {
 
       {questions.map(question => (
         <Route
+          key={question.id}
           exact
           path={`${getUrlWithoutLastPart(match.path)}/${question.id}`}
         >
