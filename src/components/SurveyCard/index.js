@@ -15,7 +15,16 @@ import { withRouter } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
 import axiosInstace from "../../services/api";
 import SizedBox from "../../components/SizedBox";
-import { COORDINATOR, IDLE, ACTIVE, URL_SURVEY, CLOSED, URL_SURVEYS, URL_RESULTS } from '../../utils/constants';
+import {
+  COORDINATOR,
+  IDLE,
+  ACTIVE,
+  URL_SURVEY,
+  CLOSED,
+  URL_SURVEYS,
+  URL_RESULTS
+} from "../../utils/constants";
+import { toast } from "react-toastify";
 
 const SurveyCard = ({
   history,
@@ -30,10 +39,20 @@ const SurveyCard = ({
   const isActive = status?.toUpperCase() === ACTIVE;
   const isAdmin = user?.data?.role?.toUpperCase() === COORDINATOR;
   const changeSurveyStatus = status => {
-    axiosInstace
+    return axiosInstace
       .put(`${URL_SURVEYS}/status/` + surveyId, { status })
-      .then(refetchData)
-      .catch();
+      .then(refetchData);
+  };
+
+  const handleChangeStatusToActive = () => {
+    changeSurveyStatus(ACTIVE)
+      .then(() => toast.success("Survey moved to active."))
+      .catch(() => toast.error("Error moving survey to active."));
+  };
+  const handleChangeStatusToClosed = () => {
+    changeSurveyStatus(CLOSED)
+      .then(() => toast.success("Survey moved to closed."))
+      .catch(() => toast.error("Error moving survey to closed."));
   };
 
   return (
@@ -56,7 +75,7 @@ const SurveyCard = ({
           <Button
             color={"primary"}
             rounded
-            onClick={() => changeSurveyStatus(ACTIVE)}
+            onClick={handleChangeStatusToActive}
           >
             {"Open Survey"}
           </Button>
@@ -76,11 +95,7 @@ const SurveyCard = ({
         {isAdmin && isActive && (
           <>
             <SizedBox height="15px" />
-            <Button
-              color={"red"}
-              rounded
-              onClick={() => changeSurveyStatus(CLOSED)}
-            >
+            <Button color={"red"} rounded onClick={handleChangeStatusToClosed}>
               {"Close Survey"}
             </Button>
           </>
