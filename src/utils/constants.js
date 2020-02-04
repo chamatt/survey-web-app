@@ -2,6 +2,7 @@ export const COORDINATOR = "COORDINATOR";
 export const IDLE = "IDLE";
 export const ACTIVE = "ACTIVE";
 export const CLOSED = "CLOSED";
+export const CANCEL = "CANCEL";
 
 // URL
 export const URL_ROOT = "/";

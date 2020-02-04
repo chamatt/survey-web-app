@@ -26,7 +26,7 @@ import Header from "../../components/Header";
 import { debounce, uniqBy } from "lodash";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { URL_ROOT, ACTIVE, IDLE, URL_SURVEYS } from "../../utils/constants";
+import { URL_ROOT, URL_SURVEYS, ACTIVE, IDLE, CANCEL } from "../../utils/constants";
 
 const defaultValue = {
   title: "",
@@ -171,6 +171,13 @@ export default function CreateSurvey({ history }) {
         createSurvey={false}
         leftButtons={[
           <Button
+            key={`${CANCEL}-BUTTON`}
+            color="danger"
+            onClick={() => history.push(URL_SURVEYS)}
+          >
+            Cancel
+          </Button>,
+          <Button
             key={`${ACTIVE}-BUTTON`}
             color="green"
             onClick={() => saveSurvey(ACTIVE)}
@@ -183,13 +190,6 @@ export default function CreateSurvey({ history }) {
             onClick={() => saveSurvey(IDLE)}
           >
             Save
-          </Button>,
-          <Button
-            key={`CANCEL-BUTTON`}
-            color="danger"
-            onClick={() => history.push(URL_SURVEYS)}
-          >
-            Cancel
           </Button>
         ]}
       />
