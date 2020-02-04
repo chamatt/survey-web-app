@@ -1,5 +1,27 @@
 # Survey App
 
+## Demo App on Heroku
+
+Front-end in react: [Survey Web App](https://nextly-survey-web.herokuapp.com/)
+Back-end API: [Survey API](https://nextly-survey.herokuapp.com/)
+
+### API Docs
+
+[Postman Docs](https://documenter.getpostman.com/view/6051051/SWTD8Grh?version=latest#1788bb0c-b1b2-480d-bafe-87497e22c909)
+
+#### Admin Login Details
+
+Email: admin@admin.com
+Password: 123456
+
+## Running the app locally
+
+```
+yarn start
+```
+
+## Specifications
+
 **Tier:** 3-Advanced
 
 Surveys are a valuable part of any developers toolbox. They are useful for
@@ -67,7 +89,7 @@ open for responses will be accessed from the app's web page.
 
 - [x] Survey Coordinators and Survey Respondents can select the survey to
       display from a list of closed surveys
-- [ ] Survey Coordinators and Survey Respondents can view survey results as
+- [x] Survey Coordinators and Survey Respondents can view survey results as
       in tabular format showing the number of responses for each of the possible
       selections to the questions.
 
@@ -75,8 +97,8 @@ open for responses will be accessed from the app's web page.
 
 - [x] Survey Respondents can create a unique account in the app
 - [x] Survey Respondents can login to the app
-- [ ] Survey Respondents cannot complete the same survey more than once
-- [ ] Survey Coordinators and Survey Respondents can view graphical
+- [x] Survey Respondents cannot complete the same survey more than once
+- [x] Survey Coordinators and Survey Respondents can view graphical
       representations of survey results (e.g. pie, bar, column, etc. charts)
 
 ## Useful links and resources
