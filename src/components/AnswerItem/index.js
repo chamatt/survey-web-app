@@ -1,6 +1,12 @@
 import React from "react";
 
-import { Container, AnswerText, AnswerTextContainer, I } from "./styles";
+import {
+  Container,
+  AnswerText,
+  AnswerTextContainer,
+  I,
+  ResultPercentage
+} from "./styles";
 
 export default function AnswerItem({
   text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -9,7 +15,9 @@ export default function AnswerItem({
   selected = false,
   selections,
   onSelect = () => {},
-  id
+  id,
+  showResults = false,
+  resultPercent
 }) {
   const handleSelect = () => {
     onSelect({
@@ -19,13 +27,23 @@ export default function AnswerItem({
   };
 
   return (
-    <Container selected={selected} onClick={handleSelect}>
+    <Container
+      selected={selected}
+      onClick={handleSelect}
+      percentage={resultPercent}
+    >
       <AnswerTextContainer>
         <AnswerText>{text}</AnswerText>
       </AnswerTextContainer>
-      <I className="material-icons" selected={selected}>
-        {selected ? "check_box" : "check_box_outline_blank"}
-      </I>
+      {showResults ? (
+        <ResultPercentage>{`${parseInt(
+          resultPercent * 100
+        )}%`}</ResultPercentage>
+      ) : (
+        <I className="material-icons" selected={selected}>
+          {selected ? "check_box" : "check_box_outline_blank"}
+        </I>
+      )}
     </Container>
   );
 }

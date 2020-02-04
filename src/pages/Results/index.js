@@ -9,23 +9,28 @@ import AnswerItem from "../../components/AnswerItem";
 
 export default function Survey({ history, match }) {
   const [data, setData] = useState();
-  const mount = data => (
-    <Card>
-      {data?.questions?.map(question => {
-        return (
-          <>
-            <Question>{"Question: " + question.title}</Question>
-            {question?.options?.map((option, i) => (
-              <AnswerItem />
-              // <p>
-              //   {option}: {question.result[i]}
-              // </p>
-            ))}
-          </>
-        );
-      })}
-    </Card>
-  );
+  const mount = data =>
+    data?.questions?.map(question => {
+      const total = question.result.reduce((acc, cur) => cur + acc, 0);
+
+      return (
+        <Card>
+          <Question>{"Question: " + question.title}</Question>
+          {question?.options?.map((option, i) => (
+            <AnswerItem
+              questionId={question.id}
+              answerId={option}
+              text={option}
+              showResults
+              resultPercent={total ? question.result[i] / total : 0}
+            />
+            // <p>
+            //   {option}: {question.result[i]}
+            // </p>
+          ))}
+        </Card>
+      );
+    });
 
   useEffect(() => {
     axiosInstance

@@ -6,8 +6,6 @@ import {
   TitleContainer,
   Category,
   Heading,
-  ImgContainer,
-  Img,
   Body,
   Description,
   Footer
@@ -69,7 +67,11 @@ const SurveyCard = ({
           <Button
             color={isActive ? "purple" : "green"}
             rounded
-            onClick={() => history.push(`/results/${surveyId}`)}
+            onClick={() =>
+              isActive
+                ? history.push(`/survey/${surveyId}`)
+                : history.push(`/results/${surveyId}`)
+            }
           >
             {isActive ? "Take Survey" : "See Results"}
           </Button>

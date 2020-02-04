@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 
 import {
   Container,
   SideBar,
   SideBarItem,
-  QuestionNumber,
   QuestionCard,
   QuestionItemContainer,
   QuestionTitle,
@@ -22,7 +22,6 @@ import {
   SurveyInput
 } from "./styles";
 import SizedBox from "../../components/SizedBox";
-import Input from "../../components/Input";
 import Header from "../../components/Header";
 import { debounce, uniqBy } from "lodash";
 import api from "../../services/api";
@@ -30,7 +29,7 @@ import { toast } from "react-toastify";
 
 const defaultValue = {
   title: "",
-  options: ["ion 1"]
+  options: [""]
 };
 
 export default function CreateSurvey({ history }) {
@@ -90,7 +89,7 @@ export default function CreateSurvey({ history }) {
       toast.error("You can only add a maximum of 5 options");
       return;
     }
-    const newOptions = [...options, "Option"];
+    const newOptions = [...options, ""];
     setOptions(newOptions);
   };
   const deleteOption = index => {
@@ -141,8 +140,15 @@ export default function CreateSurvey({ history }) {
       status
     };
 
-    if (questions.some(q => !q.title))
+    if (questions.some(q => !q.title)) {
       toast.error("Error: Some question(s) are untitled");
+      return;
+    }
+
+    if (questions.some(q => q.options.some(o => !o))) {
+      toast.error("Error: Some options(s) are empty!");
+      return;
+    }
 
     api
       .post("/surveys", requestBody)

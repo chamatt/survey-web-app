@@ -17,7 +17,6 @@ import empty_list from "../../assets/img/mirage-list-is-empty.png";
 
 export default function Surveys() {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState();
   const [closedSurveys, setClosedSurveys] = useState();
   const [openSurveys, setOpenSurveys] = useState();
   const [idleSurveys, setIdleSurveys] = useState();
@@ -40,6 +39,8 @@ export default function Surveys() {
   };
 
   useEffect(fetchData, [user]);
+
+  console.log(user);
 
   return (
     <Container>
@@ -69,20 +70,13 @@ export default function Surveys() {
             ))}
         </SurveyGrid>
       </>
-      <>
-        <SizedBox height="50px"></SizedBox>
-        <Title>Idle Surveys</Title>
-        <SizedBox height="20px"></SizedBox>
-        {!idleSurveys?.length && (
-          <EmptyWarning>
-            <VectorContainer src={empty_list} />
-            <EmptyWarningText> No Idle Surveys Available</EmptyWarningText>
-          </EmptyWarning>
-        )}
-        <SurveyGrid>
-          {!loading &&
-            idleSurveys?.length &&
-            idleSurveys?.map(survey => (
+      {!loading && idleSurveys?.length && (
+        <>
+          <SizedBox height="50px"></SizedBox>
+          <Title>Idle Surveys</Title>
+          <SizedBox height="20px"></SizedBox>
+          <SurveyGrid>
+            {idleSurveys?.map(survey => (
               <SurveyCard
                 key={survey.id}
                 title={survey.title}
@@ -92,8 +86,9 @@ export default function Surveys() {
                 refetchData={fetchData}
               />
             ))}
-        </SurveyGrid>
-      </>
+          </SurveyGrid>
+        </>
+      )}
       <>
         <SizedBox height="50px"></SizedBox>
         <Title>Closed Surveys</Title>

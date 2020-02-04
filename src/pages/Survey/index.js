@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { Container, Card, Question, Buttons, Head } from "./styles";
 import AnswerItem from "../../components/AnswerItem";
