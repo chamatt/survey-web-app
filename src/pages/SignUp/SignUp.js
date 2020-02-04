@@ -55,7 +55,7 @@ export default function SignUp({ history }) {
 
       history.push(URL_ROOT);
     } catch ({ response }) {
-      setError(response?.data || "Unexpected error");
+      setError(response?.data?.message || response?.data || "Unexpected error");
     }
   };
 
