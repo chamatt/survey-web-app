@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from "react";
 
-import { Container, Title, Description } from "./styles";
+import { Container, Title, Description, Card, Question } from "./styles";
 import axiosInstance from "../../services/api";
 
 import Header from "../../components/Header";
 
+import AnswerItem from "../../components/AnswerItem";
+
 export default function Survey({ history, match }) {
   const [data, setData] = useState();
-  const mount = data =>
-    data?.questions?.map(question => {
-      return (
-        <>
-          <p>{"Question: " + question.title}</p>
-          {question?.options?.map((option, i) => (
-            <p>
-              {option}: {question.result[i]}
-            </p>
-          ))}
-        </>
-      );
-    });
+  const mount = data => (
+    <Card>
+      {data?.questions?.map(question => {
+        return (
+          <>
+            <Question>{"Question: " + question.title}</Question>
+            {question?.options?.map((option, i) => (
+              <AnswerItem />
+              // <p>
+              //   {option}: {question.result[i]}
+              // </p>
+            ))}
+          </>
+        );
+      })}
+    </Card>
+  );
 
   useEffect(() => {
     axiosInstance
