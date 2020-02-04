@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Route } from "react-router-dom";
 import { Container, Card, Question, Buttons, Head } from "./styles";
 import AnswerItem from "../../components/AnswerItem";
@@ -10,16 +10,30 @@ import Header from "../../components/Header";
 import VectorContainer from "../../components/VectorContainer";
 import done_vector from "../../assets/img/task-done.png";
 import bermuda_welcome from "../../assets/img/bermuda-welcome.png";
-import useFetch from "react-fetch-hook";
 import api from "../../services/api";
+import AuthContext from "../../contexts/auth";
 import { toast } from "react-toastify";
 import { URL_ROOT, URL_SURVEYS, URL_SURVEY } from "../../utils/constants";
 
 export default function Survey({ history, match }) {
   const [selections, setSelections] = useState({});
-  const { isLoading, data } = useFetch(
-    `https://nextly-survey.herokuapp.com/surveys/${match.params.surveyId}`
-  );
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState({});
+  const { user } = useContext(AuthContext);
+  const fetchData = () => {
+    setIsLoading(true);
+    api
+      .get(`/surveys/${match.params.surveyId}`)
+      .then(response => {
+        setIsLoading(false);
+        setData(response.data);
+      })
+      .catch(({ response }) => {
+        setIsLoading(false);
+      });
+  };
+  useEffect(fetchData, [user]);
 
   if (isLoading) {
     return <Container></Container>;
@@ -76,10 +90,16 @@ export default function Survey({ history, match }) {
             <SizedBox height="20px"></SizedBox>
             <VectorContainer src={bermuda_welcome} />
             <SizedBox height="20px"></SizedBox>
-            <div>{questions.length} QUESTION{questions.length !== 1 ? "S" : ""}</div>
-            <div> {0.25 * questions.length} MINUTE{questions.length !== 4 ? "S" : ""}</div>
+            <div>
+              {questions?.length} QUESTION{questions?.length !== 1 ? "S" : ""}
+            </div>
+            <div>
+              {" "}
+              {0.25 * questions?.length} MINUTE
+              {questions?.length !== 4 ? "S" : ""}
+            </div>
           </Head>
-          <p>
+          <p class="center">
             {!isLoading && data.taken && "You already completed this survey"}
           </p>
           {!isLoading && (
@@ -90,7 +110,7 @@ export default function Survey({ history, match }) {
                   block
                   color="secondary"
                   textColor={themes.colors.textNormal}
-                  rightIcon="chevron_right"
+                  leftIcon="chevron_left"
                   onClick={() => history.goBack()}
                 >
                   Go back
@@ -116,7 +136,7 @@ export default function Survey({ history, match }) {
         </Card>
       </Route>
 
-      {questions.map(question => (
+      {questions?.map(question => (
         <Route
           key={question.id}
           exact
