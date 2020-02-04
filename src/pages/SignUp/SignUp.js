@@ -15,6 +15,7 @@ import signin_vector from "../../assets/img/flame-sign-up.png";
 import BackLink from "../../components/BackLink";
 import axiosInstance from "../../services/api";
 import AuthContext from "../../contexts/auth";
+import { URL_ROOT, URL_LOGIN } from "../../utils/constants";
 
 export default function SignUp({ history }) {
   const { user, setUser } = useContext(AuthContext);
@@ -52,7 +53,7 @@ export default function SignUp({ history }) {
 
       localStorage.setItem("user", JSON.stringify(userData));
 
-      history.push("/");
+      history.push(URL_ROOT);
     } catch ({ response }) {
       console.log(response);
       setError(response?.data || "Unexpected error");
@@ -64,7 +65,7 @@ export default function SignUp({ history }) {
       <VectorContainer src={signin_vector} />
       <Title>Sign Up</Title>
       <Card width="50%">
-        <BackLink onClick={() => history.push("/login")}>
+        <BackLink onClick={() => history.push(URL_LOGIN)}>
           Back to Login
         </BackLink>
         <form className="col s12">
@@ -73,7 +74,7 @@ export default function SignUp({ history }) {
             name="email"
             icon="mail_outline"
             type="email"
-            label="Email Address"
+            label="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             required

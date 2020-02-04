@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { Container, Card, Question, Buttons, Head } from "./styles";
 import AnswerItem from "../../components/AnswerItem";
@@ -13,10 +13,10 @@ import bermuda_welcome from "../../assets/img/bermuda-welcome.png";
 import useFetch from "react-fetch-hook";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { URL_ROOT, URL_SURVEYS, URL_SURVEY } from "../../utils/constants";
 
 export default function Survey({ history, match }) {
   const [selections, setSelections] = useState({});
-  // const { questions, ...survey } = mock;
   const { isLoading, data } = useFetch(
     `https://nextly-survey.herokuapp.com/surveys/${match.params.surveyId}`
   );
@@ -41,7 +41,7 @@ export default function Survey({ history, match }) {
         )}`
       );
     } else {
-      history.push(`/survey/${match.params.surveyId}/complete`);
+      history.push(`${URL_SURVEY}/${match.params.surveyId}/complete`);
     }
   };
 
@@ -64,7 +64,7 @@ export default function Survey({ history, match }) {
       .post("/entries", requestBody)
       .then(() => {
         toast.success("☑ Survey submitted successfuly!");
-        history.push("/");
+        history.push(URL_ROOT);
       })
       .catch(err => {
         toast.error("Error submiting survey: " + err?.response?.data?.message);
@@ -160,7 +160,7 @@ export default function Survey({ history, match }) {
               large
               color="danger"
               leftIcon="cancel"
-              onClick={() => history.push("/surveys")}
+              onClick={() => history.push(URL_SURVEYS)}
             >
               Cancel
             </Button>

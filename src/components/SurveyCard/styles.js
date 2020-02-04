@@ -40,7 +40,6 @@ export const ImgContainer = styled.div`
 export const Img = styled.img`
   object-fit: contain;
   height: 100%;
-  /* width: 100%; */
   border-radius: 15px;
 `;
 
@@ -54,8 +53,6 @@ export const Heading = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  /* height: 150px; */
-  /* padding: 10px; */
   overflow: hidden;
 `;
 export const TitleContainer = styled.div`
@@ -63,11 +60,9 @@ export const TitleContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  /* height: 150px; */
 `;
 
 export const Body = styled.div`
-  /* padding: 10px; */
 `;
 
 export const Description = styled.p`

@@ -6,8 +6,6 @@ import {
   TitleContainer,
   Category,
   Heading,
-  ImgContainer,
-  Img,
   Body,
   Description,
   Footer
@@ -17,6 +15,7 @@ import { withRouter } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
 import axiosInstace from "../../services/api";
 import SizedBox from "../../components/SizedBox";
+import { COORDINATOR, IDLE, ACTIVE, URL_RESULTS } from '../../utils/constants';
 
 const SurveyCard = ({
   history,
@@ -28,9 +27,9 @@ const SurveyCard = ({
   surveyId = "123"
 }) => {
   const { user } = useContext(AuthContext);
-  const isIdle = status?.toUpperCase() === "IDLE";
-  const isActive = status?.toUpperCase() === "ACTIVE";
-  const isAdmin = user?.data?.role?.toUpperCase() === "COORDINATOR";
+  const isIdle = status?.toUpperCase() === IDLE;
+  const isActive = status?.toUpperCase() === ACTIVE;
+  const isAdmin = user?.data?.role?.toUpperCase() === COORDINATOR;
   const changeSurveyStatus = status => {
     axiosInstace
       .put("/surveys/status/" + surveyId, { status })
@@ -41,9 +40,6 @@ const SurveyCard = ({
   return (
     <SurveyContainer>
       <Heading>
-        {/* <ImgContainer>
-          <Img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRr0hAkIFYIpAqMCCRIRfZDs5lzfY6FllALV6Wy1FXL9xca6WFZ" />
-        </ImgContainer> */}
         <TitleContainer>
           <Category>
             <i className="material-icons left">event_note</i>Survey
@@ -69,7 +65,7 @@ const SurveyCard = ({
           <Button
             color={isActive ? "purple" : "green"}
             rounded
-            onClick={() => history.push(`/results/${surveyId}`)}
+            onClick={() => history.push(`${URL_RESULTS}/${surveyId}`)}
           >
             {isActive ? "Take Survey" : "See Results"}
           </Button>

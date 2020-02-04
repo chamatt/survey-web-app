@@ -8,10 +8,6 @@ export const Container = styled.div`
   cursor: pointer;
   border: 1px solid #ffffff0f;
   transition: all 0.1s;
-  /* ${props =>
-    props.selected
-      ? `border: 1px solid ${props.theme.colors.primary};`
-      : `border: 1px solid #ffffff0f;`} */
 
   &:hover {
     background-color: rgba(100, 100, 110, 0.1);
@@ -28,7 +24,7 @@ export const Container = styled.div`
     color: ${props.theme.colors.textNormal};
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     `}
-  
+
 `;
 
 export const AnswerTextContainer = styled.div`

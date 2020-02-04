@@ -17,9 +17,6 @@ export default function Survey({ history, match }) {
             <Question>{"Question: " + question.title}</Question>
             {question?.options?.map((option, i) => (
               <AnswerItem />
-              // <p>
-              //   {option}: {question.result[i]}
-              // </p>
             ))}
           </>
         );

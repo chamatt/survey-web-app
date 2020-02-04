@@ -14,10 +14,10 @@ import axiosInstace from "../../services/api";
 import AuthContext from "../../contexts/auth";
 import VectorContainer from "../../components/VectorContainer";
 import empty_list from "../../assets/img/mirage-list-is-empty.png";
+import { CLOSED, IDLE, ACTIVE } from '../../utils/constants';
 
 export default function Surveys() {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState();
   const [closedSurveys, setClosedSurveys] = useState();
   const [openSurveys, setOpenSurveys] = useState();
   const [idleSurveys, setIdleSurveys] = useState();
@@ -28,9 +28,9 @@ export default function Surveys() {
       .get("/surveys/")
       .then(response => {
         setLoading(false);
-        setClosedSurveys(response?.data?.filter(s => s.status === "CLOSED"));
-        setOpenSurveys(response?.data?.filter(s => s.status === "ACTIVE"));
-        setIdleSurveys(response?.data?.filter(s => s.status === "IDLE"));
+        setClosedSurveys(response?.data?.filter(s => s.status === CLOSED));
+        setOpenSurveys(response?.data?.filter(s => s.status === ACTIVE));
+        setIdleSurveys(response?.data?.filter(s => s.status === IDLE));
 
         console.log(response.data);
       })
