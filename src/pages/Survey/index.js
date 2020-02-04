@@ -65,6 +65,8 @@ export default function Survey({ history, match }) {
       });
   };
 
+  console.log(data);
+
   return (
     <Container>
       <Header />
@@ -79,23 +81,40 @@ export default function Survey({ history, match }) {
             <div>{questions.length} QUESTIONS</div>
             <div> {0.25 * questions.length} MINUTES</div>
           </Head>
-
-          <Buttons>
-            <Button
-              large
-              block
-              color="secondary"
-              textColor={themes.colors.textNormal}
-              rightIcon="chevron_right"
-              onClick={() =>
-                history.push(
-                  `/survey/${match.params.surveyId}/questions/${questions[0].id}`
-                )
-              }
-            >
-              Start Now
-            </Button>
-          </Buttons>
+          <p>
+            {!isLoading && data.taken && "You already completed this survey"}
+          </p>
+          {!isLoading && (
+            <Buttons>
+              {data.taken ? (
+                <Button
+                  large
+                  block
+                  color="secondary"
+                  textColor={themes.colors.textNormal}
+                  rightIcon="chevron_right"
+                  onClick={() => history.goBack()}
+                >
+                  Go back
+                </Button>
+              ) : (
+                <Button
+                  large
+                  block
+                  color="secondary"
+                  textColor={themes.colors.textNormal}
+                  rightIcon="chevron_right"
+                  onClick={() =>
+                    history.push(
+                      `/survey/${match.params.surveyId}/questions/${questions[0].id}`
+                    )
+                  }
+                >
+                  Start Now
+                </Button>
+              )}
+            </Buttons>
+          )}
         </Card>
       </Route>
 
@@ -112,7 +131,7 @@ export default function Survey({ history, match }) {
             <SizedBox height="20px" />
             {question.options.map(text => (
               <AnswerItem
-                key={question.id}
+                key={text}
                 questionId={question.id}
                 answerId={text}
                 text={text}
