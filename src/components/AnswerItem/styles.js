@@ -24,7 +24,17 @@ export const Container = styled.div`
     color: ${props.theme.colors.textNormal};
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     `}
+  
 
+    ${props =>
+      props.percentage &&
+      `background-image: linear-gradient(90deg, ${
+        props.theme.colors.secondary
+      }44 ${parseInt(props.percentage * 100 - -1)}%, transparent ${parseInt(
+        props.percentage * 100
+      )}%, transparent  ${parseInt(101 - props.percentage * 100)}%);
+        border-right: none;
+        `}
 `;
 
 export const AnswerTextContainer = styled.div`
@@ -54,4 +64,8 @@ export const I = styled.i`
   padding: 20px;
   font-size: 2rem;
   ${props => props.selected && `color: ${props.theme.colors.primary};`}
+`;
+
+export const ResultPercentage = styled.div`
+  padding-right: 10px;
 `;

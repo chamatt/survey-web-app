@@ -15,12 +15,11 @@ import { withRouter } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
 import axiosInstace from "../../services/api";
 import SizedBox from "../../components/SizedBox";
-import { COORDINATOR, IDLE, ACTIVE, URL_RESULTS, CLOSED } from '../../utils/constants';
+import { COORDINATOR, IDLE, ACTIVE, URL_SURVEY, CLOSED, URL_SURVEYS, URL_RESULTS } from '../../utils/constants';
 
 const SurveyCard = ({
   history,
   title = "IT Executive Compensation Study",
-  description,
   numQuestions,
   status,
   refetchData = () => {},
@@ -32,7 +31,7 @@ const SurveyCard = ({
   const isAdmin = user?.data?.role?.toUpperCase() === COORDINATOR;
   const changeSurveyStatus = status => {
     axiosInstace
-      .put("/surveys/status/" + surveyId, { status })
+      .put(`${URL_SURVEYS}/status/"` + surveyId, { status })
       .then(refetchData)
       .catch();
   };
@@ -65,7 +64,11 @@ const SurveyCard = ({
           <Button
             color={isActive ? "purple" : "green"}
             rounded
-            onClick={() => history.push(`${URL_RESULTS}/${surveyId}`)}
+            onClick={() =>
+              isActive
+                ? history.push(`${URL_SURVEY}/${surveyId}`)
+                : history.push(`${URL_RESULTS}/${surveyId}`)
+            }
           >
             {isActive ? "Take Survey" : "See Results"}
           </Button>

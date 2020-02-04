@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 
 import {
@@ -29,7 +30,7 @@ import { URL_ROOT, ACTIVE, IDLE } from "../../utils/constants";
 
 const defaultValue = {
   title: "",
-  options: ["Option"]
+  options: [""]
 };
 
 export default function CreateSurvey({ history }) {
@@ -89,7 +90,7 @@ export default function CreateSurvey({ history }) {
       toast.error("You can only add a maximum of 5 options");
       return;
     }
-    const newOptions = [...options, "Option"];
+    const newOptions = [...options, ""];
     setOptions(newOptions);
   };
   const deleteOption = index => {
@@ -140,8 +141,15 @@ export default function CreateSurvey({ history }) {
       status
     };
 
-    if (questions.some(q => !q.title))
+    if (questions.some(q => !q.title)) {
       toast.error("Error: Some question(s) are untitled");
+      return;
+    }
+
+    if (questions.some(q => q.options.some(o => !o))) {
+      toast.error("Error: Some options(s) are empty!");
+      return;
+    }
 
     api
       .post("/surveys", requestBody)
