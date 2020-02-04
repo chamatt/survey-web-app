@@ -67,7 +67,7 @@ export default function Surveys() {
             ))}
         </SurveyGrid>
       </>
-      {!loading && idleSurveys?.length && (
+      {!loading && idleSurveys?.length > 0 && (
         <>
           <SizedBox height="50px"></SizedBox>
           <Title>Idle Surveys</Title>
