@@ -48,7 +48,7 @@ const SurveyCard = ({
       </Heading>
       <Body>
         <Description>
-          {numQuestions} questions ({0.25 * numQuestions} minutes)
+          {numQuestions} question{numQuestions !== 1 ? "s" : ""} ({0.25 * numQuestions} minute{numQuestions !== 4 ? "s" : ""})
         </Description>
       </Body>
       <Footer>

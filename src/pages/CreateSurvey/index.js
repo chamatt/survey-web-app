@@ -181,7 +181,7 @@ export default function CreateSurvey({ history }) {
 
       <SurveyName>
         <SurveyInput
-          placeholder="Survey Name"
+          placeholder="Survey Title"
           value={surveyTitle}
           onChange={e => setSurveyTitle(e.target.value)}
         />

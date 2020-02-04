@@ -44,7 +44,7 @@ function Header({
     </Card>
   ) : (
     <p style={{ color: "white" }}>
-      Welcome {user.data.name}!{" "}
+      Welcome, {user.data.name}!{" "}
       <LogoutButton onClick={logout}>{" "}Logout</LogoutButton>
     </p>
   );
