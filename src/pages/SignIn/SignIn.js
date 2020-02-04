@@ -43,12 +43,18 @@ export default function SignIn({ history }) {
     }
   };
 
+  const handleKeyPress = event => {
+    if (event.key === "Enter") {
+      login(email, password);
+    }
+  };
+
   return (
     <Container>
       <VectorContainer src={signin_vector}></VectorContainer>
       <Title>Sign In</Title>
       <Card>
-        <form className="col s12">
+        <form className="col s12" onSubmit={() => login(email, password)}>
           <Input
             id="email"
             name="email"
@@ -57,6 +63,7 @@ export default function SignIn({ history }) {
             label="Email"
             value={email}
             onChange={e => setError() || setEmail(e.target.value)}
+            onKeyPress={handleKeyPress}
           ></Input>
           <Input
             id="password"
@@ -66,6 +73,7 @@ export default function SignIn({ history }) {
             label="Password"
             value={password}
             onChange={e => setError() || setPassword(e.target.value)}
+            onKeyPress={handleKeyPress}
           ></Input>
         </form>
         <ErrorMessage>{error}</ErrorMessage>

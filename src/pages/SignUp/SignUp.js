@@ -59,6 +59,12 @@ export default function SignUp({ history }) {
     }
   };
 
+  const handleKeyPress = event => {
+    if (event.key === "Enter") {
+      register();
+    }
+  };
+
   return (
     <Container>
       <VectorContainer src={signin_vector} />
@@ -76,6 +82,7 @@ export default function SignUp({ history }) {
             label="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            onKeyPress={handleKeyPress}
             required
           ></Input>
           <Input
@@ -86,6 +93,7 @@ export default function SignUp({ history }) {
             label="Password"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            onKeyPress={handleKeyPress}
             required
           ></Input>
           <Input
@@ -96,6 +104,7 @@ export default function SignUp({ history }) {
             label="Username"
             value={username}
             onChange={e => setUsername(e.target.value)}
+            onKeyPress={handleKeyPress}
             required
           ></Input>
           <Input
@@ -106,6 +115,7 @@ export default function SignUp({ history }) {
             label="Full Name"
             value={name}
             onChange={e => setName(e.target.value)}
+            onKeyPress={handleKeyPress}
             required
           ></Input>
         </form>
