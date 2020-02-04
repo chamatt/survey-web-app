@@ -1,11 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 
-import { Container, SurveyGrid, Title } from "./styles";
+import {
+  Container,
+  SurveyGrid,
+  Title,
+  EmptyWarning,
+  EmptyWarningText
+} from "./styles";
 import SurveyCard from "../../components/SurveyCard";
 import Header from "../../components/Header";
 import SizedBox from "../../components/SizedBox";
 import axiosInstace from "../../services/api";
 import AuthContext from "../../contexts/auth";
+import VectorContainer from "../../components/VectorContainer";
+import empty_list from "../../assets/img/mirage-list-is-empty.png";
 
 export default function Surveys() {
   const [loading, setLoading] = useState(true);
@@ -36,13 +44,20 @@ export default function Surveys() {
   return (
     <Container>
       <Header />
-      {!loading && openSurveys?.length && (
-        <>
-          <SizedBox height="50px"></SizedBox>
-          <Title>Active Surveys</Title>
-          <SizedBox height="20px"></SizedBox>
-          <SurveyGrid>
-            {openSurveys?.map(survey => (
+      <>
+        <SizedBox height="50px"></SizedBox>
+        <Title>Active Surveys</Title>
+        <SizedBox height="20px"></SizedBox>
+        {!openSurveys?.length && (
+          <EmptyWarning>
+            <VectorContainer src={empty_list} />
+            <EmptyWarningText> No Active Surveys Available</EmptyWarningText>
+          </EmptyWarning>
+        )}
+        <SurveyGrid>
+          {!loading &&
+            openSurveys?.length &&
+            openSurveys?.map(survey => (
               <SurveyCard
                 key={survey.id}
                 title={survey.title}
@@ -52,17 +67,22 @@ export default function Surveys() {
                 refetchData={fetchData}
               />
             ))}
-          </SurveyGrid>
-        </>
-      )}
-
-      {!loading && idleSurveys?.length && (
-        <>
-          <SizedBox height="50px"></SizedBox>
-          <Title>Idle Surveys</Title>
-          <SizedBox height="20px"></SizedBox>
-          <SurveyGrid>
-            {idleSurveys?.map(survey => (
+        </SurveyGrid>
+      </>
+      <>
+        <SizedBox height="50px"></SizedBox>
+        <Title>Idle Surveys</Title>
+        <SizedBox height="20px"></SizedBox>
+        {!idleSurveys?.length && (
+          <EmptyWarning>
+            <VectorContainer src={empty_list} />
+            <EmptyWarningText> No Idle Surveys Available</EmptyWarningText>
+          </EmptyWarning>
+        )}
+        <SurveyGrid>
+          {!loading &&
+            idleSurveys?.length &&
+            idleSurveys?.map(survey => (
               <SurveyCard
                 key={survey.id}
                 title={survey.title}
@@ -72,17 +92,22 @@ export default function Surveys() {
                 refetchData={fetchData}
               />
             ))}
-          </SurveyGrid>
-        </>
-      )}
-
-      {!loading && closedSurveys?.length && (
-        <>
-          <SizedBox height="50px"></SizedBox>
-          <Title>Closed Surveys</Title>
-          <SizedBox height="20px"></SizedBox>
-          <SurveyGrid>
-            {closedSurveys?.map(survey => (
+        </SurveyGrid>
+      </>
+      <>
+        <SizedBox height="50px"></SizedBox>
+        <Title>Closed Surveys</Title>
+        <SizedBox height="20px"></SizedBox>
+        {!closedSurveys?.length && (
+          <EmptyWarning>
+            <VectorContainer src={empty_list} />
+            <EmptyWarningText> No Closed Surveys Available</EmptyWarningText>
+          </EmptyWarning>
+        )}
+        <SurveyGrid>
+          {!loading &&
+            closedSurveys?.length &&
+            closedSurveys?.map(survey => (
               <SurveyCard
                 key={survey.id}
                 title={survey.title}
@@ -92,9 +117,8 @@ export default function Surveys() {
                 refetchData={fetchData}
               />
             ))}
-          </SurveyGrid>
-        </>
-      )}
+        </SurveyGrid>
+      </>
     </Container>
   );
 }

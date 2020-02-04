@@ -22,7 +22,7 @@ export default function SignIn({ history }) {
       });
 
       console.log(response);
-
+      console.log("kfjdlkf");
       axiosInstance.defaults.headers.common = {
         Authorization: `Bearer ${response.data.token}`
       };

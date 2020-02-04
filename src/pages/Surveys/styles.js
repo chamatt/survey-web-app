@@ -28,3 +28,13 @@ export const Title = styled.h2`
   color: ${props => props.theme.colors.secondary};
   /* text-transform: uppercase; */
 `;
+
+export const EmptyWarning = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const EmptyWarningText = styled.h6`
+  color: ${props => props.theme.colors.secondary};
+`;
