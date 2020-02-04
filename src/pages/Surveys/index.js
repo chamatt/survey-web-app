@@ -39,8 +39,6 @@ export default function Surveys() {
 
   useEffect(fetchData, [user]);
 
-  console.log(user);
-
   return (
     <Container>
       <Header />

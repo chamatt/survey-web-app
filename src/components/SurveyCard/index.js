@@ -31,7 +31,7 @@ const SurveyCard = ({
   const isAdmin = user?.data?.role?.toUpperCase() === COORDINATOR;
   const changeSurveyStatus = status => {
     axiosInstace
-      .put(`${URL_SURVEYS}/status/"` + surveyId, { status })
+      .put(`${URL_SURVEYS}/status/` + surveyId, { status })
       .then(refetchData)
       .catch();
   };

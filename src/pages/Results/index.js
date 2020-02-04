@@ -14,7 +14,7 @@ export default function Survey({ history, match }) {
       const total = question.result.reduce((acc, cur) => cur + acc, 0);
 
       return (
-        <Card>
+        <Card key={question.id}>
           <Question>{"Question: " + question.title}</Question>
           {question?.options?.map((option, i) => (
             <AnswerItem
