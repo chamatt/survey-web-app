@@ -28,7 +28,6 @@ export const Title = styled.p`
   color: ${props => props.theme.colors.textNormal};
   font-size: 1.3rem;
   margin: 0;
-  text-transform: capitalize;
 `;
 
 export const ImgContainer = styled.div`
@@ -62,8 +61,7 @@ export const TitleContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Body = styled.div`
-`;
+export const Body = styled.div``;
 
 export const Description = styled.p`
   font-size: 1rem;

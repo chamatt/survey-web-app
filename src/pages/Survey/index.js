@@ -86,7 +86,7 @@ export default function Survey({ history, match }) {
         <Card>
           <BackLink onClick={() => history.goBack()}>Back to surveys</BackLink>
           <Head>
-            <Question>Take a Quick Survey</Question>
+            <Question>Take a quick survey</Question>
             <SizedBox height="20px"></SizedBox>
             <VectorContainer src={bermuda_welcome} />
             <SizedBox height="20px"></SizedBox>
