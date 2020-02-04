@@ -136,7 +136,7 @@ export default function Survey({ history, match }) {
         </Card>
       </Route>
 
-      {questions?.map(question => {
+      {questions?.map((question, i) => {
         return (
           <Route
             key={question.id}
@@ -145,7 +145,7 @@ export default function Survey({ history, match }) {
           >
             <Card>
               <BackLink onClick={() => history.goBack()}>
-                Previous Question
+                {i > 0 ? "Previous Question" : "Go back"}
               </BackLink>
               <Question>{question.title}</Question>
               <SizedBox height="20px" />
@@ -180,9 +180,7 @@ export default function Survey({ history, match }) {
 
       <Route exact path={`/survey/:surveyId/complete`}>
         <Card center>
-          <BackLink onClick={() => history.goBack()}>
-            Previous Question
-          </BackLink>
+          <BackLink onClick={() => history.goBack()}>Go back</BackLink>
 
           <Head>
             <Question>Survey Completed</Question>
