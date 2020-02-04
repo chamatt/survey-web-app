@@ -1,28 +1,29 @@
 {
   "files": {
-    "main.css": "/survey-web-app/static/css/main.474744a3.chunk.css",
-    "main.js": "/survey-web-app/static/js/main.ee7a0a02.chunk.js",
-    "main.js.map": "/survey-web-app/static/js/main.ee7a0a02.chunk.js.map",
+    "main.css": "/survey-web-app/static/css/main.ecaed007.chunk.css",
+    "main.js": "/survey-web-app/static/js/main.598d21ab.chunk.js",
+    "main.js.map": "/survey-web-app/static/js/main.598d21ab.chunk.js.map",
     "runtime-main.js": "/survey-web-app/static/js/runtime-main.5859d1fe.js",
     "runtime-main.js.map": "/survey-web-app/static/js/runtime-main.5859d1fe.js.map",
     "static/css/2.de4b333c.chunk.css": "/survey-web-app/static/css/2.de4b333c.chunk.css",
-    "static/js/2.718186c2.chunk.js": "/survey-web-app/static/js/2.718186c2.chunk.js",
-    "static/js/2.718186c2.chunk.js.map": "/survey-web-app/static/js/2.718186c2.chunk.js.map",
+    "static/js/2.c0298a45.chunk.js": "/survey-web-app/static/js/2.c0298a45.chunk.js",
+    "static/js/2.c0298a45.chunk.js.map": "/survey-web-app/static/js/2.c0298a45.chunk.js.map",
     "index.html": "/survey-web-app/index.html",
-    "precache-manifest.d11c20918287630c34d2a0690882076f.js": "/survey-web-app/precache-manifest.d11c20918287630c34d2a0690882076f.js",
+    "precache-manifest.3d3403bd4c77571f9c6e3af984e90952.js": "/survey-web-app/precache-manifest.3d3403bd4c77571f9c6e3af984e90952.js",
     "service-worker.js": "/survey-web-app/service-worker.js",
     "static/css/2.de4b333c.chunk.css.map": "/survey-web-app/static/css/2.de4b333c.chunk.css.map",
-    "static/css/main.474744a3.chunk.css.map": "/survey-web-app/static/css/main.474744a3.chunk.css.map",
-    "static/js/2.718186c2.chunk.js.LICENSE.txt": "/survey-web-app/static/js/2.718186c2.chunk.js.LICENSE.txt",
+    "static/css/main.ecaed007.chunk.css.map": "/survey-web-app/static/css/main.ecaed007.chunk.css.map",
+    "static/js/2.c0298a45.chunk.js.LICENSE.txt": "/survey-web-app/static/js/2.c0298a45.chunk.js.LICENSE.txt",
     "static/media/bermuda-welcome.png": "/survey-web-app/static/media/bermuda-welcome.9963302c.png",
     "static/media/flame-sign-up.png": "/survey-web-app/static/media/flame-sign-up.90821be9.png",
+    "static/media/mirage-list-is-empty.png": "/survey-web-app/static/media/mirage-list-is-empty.f9f126a1.png",
     "static/media/task-done.png": "/survey-web-app/static/media/task-done.b351d20f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.5859d1fe.js",
     "static/css/2.de4b333c.chunk.css",
-    "static/js/2.718186c2.chunk.js",
-    "static/css/main.474744a3.chunk.css",
-    "static/js/main.ee7a0a02.chunk.js"
+    "static/js/2.c0298a45.chunk.js",
+    "static/css/main.ecaed007.chunk.css",
+    "static/js/main.598d21ab.chunk.js"
   ]
 }
