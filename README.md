@@ -4,6 +4,10 @@
 
 [Survey Web App](https://chamatt.github.io/survey-web-app/)
 
+Admin Info:
+- Email: admin@admin.com
+- Password: 123456
+
 ## Credits
 
 UI/UX Inpirations:
