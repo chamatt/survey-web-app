@@ -4,6 +4,18 @@
 
 [Survey Web App](https://chamatt.github.io/survey-web-app/)
 
+## Credits
+
+UI/UX Inpirations:
+- [uixNinja](https://dribbble.com/shots/8024190-Mobile-Application-Design)
+- [Bobby Saban](https://dribbble.com/shots/5440714-Concept-Survey-Builder)
+
+Back-end API Development: 
+- [@brenoscalzer](https://github.com/brenoscalzer) 
+- [@rezendegc](https://github.com/rezendegc)
+
+
+
 ## Specifications
 
 This project was made following [app-ideas](https://github.com/florinpop17/app-ideas) Survey App specifications, in the tier 3 advanced category.
