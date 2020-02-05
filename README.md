@@ -42,7 +42,7 @@ open for responses will be accessed from the app's web page.
 - [x] Survey Coordinator can define 1-5 mutually exclusive selections to each
       question.
 - [x] Survey Coordinator can enter a title for the survey.
-- [ ] Survey Coordinator can click a 'Cancel' button to return to the home
+- [x] Survey Coordinator can click a 'Cancel' button to return to the home
       page without saving the survey.
 - [x] Survey Coordinator can click a 'Save' button save a survey.
 
