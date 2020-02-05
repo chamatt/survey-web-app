@@ -41,5 +41,4 @@ export const Question = styled.h2`
   padding-left: 20px;
   padding-right: 20px;
   font-size: 2.5em;
-  text-transform: capitalize;
 `;
