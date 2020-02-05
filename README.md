@@ -1,6 +1,12 @@
 # Survey App
 
+## Live Demo
+
+[Survey Web App](https://chamatt.github.io/survey-web-app/)
+
 ## Specifications
+
+This project was made following [app-ideas](https://github.com/florinpop17/app-ideas) Survey App specifications, in the tier 3 advanced category.
 
 **Tier:** 3-Advanced
 
@@ -93,6 +99,4 @@ Some commercial survey services include:
 - [Traversy](https://youtu.be/SSDED3XKz-0)
 - [Typeform](https://www.typeform.com/)
 
-## Example projects
 
-[Javascript Questionnaire](https://codepen.io/amyfu/pen/oLChg)
