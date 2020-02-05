@@ -1,25 +1,5 @@
 # Survey App
 
-## Demo App on Heroku
-
-Front-end in react: [Survey Web App](https://nextly-survey-web.herokuapp.com/)
-Back-end API: [Survey API](https://nextly-survey.herokuapp.com/)
-
-### API Docs
-
-[Postman Docs](https://documenter.getpostman.com/view/6051051/SWTD8Grh?version=latest#1788bb0c-b1b2-480d-bafe-87497e22c909)
-
-#### Admin Login Details
-
-Email: admin@admin.com
-Password: 123456
-
-## Running the app locally
-
-```
-yarn start
-```
-
 ## Specifications
 
 **Tier:** 3-Advanced
