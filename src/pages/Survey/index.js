@@ -86,7 +86,7 @@ export default function Survey({ history, match }) {
         <Card>
           <BackLink onClick={() => history.goBack()}>Back to surveys</BackLink>
           <Head>
-            <Question>Take a Quick Survey</Question>
+            <Question>Take a quick survey</Question>
             <SizedBox height="20px"></SizedBox>
             <VectorContainer src={bermuda_welcome} />
             <SizedBox height="20px"></SizedBox>
@@ -99,7 +99,7 @@ export default function Survey({ history, match }) {
               {questions?.length !== 4 ? "S" : ""}
             </div>
           </Head>
-          <p class="center">
+          <p className="center">
             {!isLoading && data.taken && "You already completed this survey"}
           </p>
           {!isLoading && (
@@ -136,51 +136,51 @@ export default function Survey({ history, match }) {
         </Card>
       </Route>
 
-      {questions?.map(question => (
-        <Route
-          key={question.id}
-          exact
-          path={`${getUrlWithoutLastPart(match.path)}/${question.id}`}
-        >
-          <Card>
-            <BackLink onClick={() => history.goBack()}>
-              Previous Question
-            </BackLink>
-            <Question>{question.title}</Question>
-            <SizedBox height="20px" />
-            {question.options.map(text => (
-              <AnswerItem
-                key={text}
-                questionId={question.id}
-                answerId={text}
-                text={text}
-                selected={selections[question.id] === text}
-                selections={selections}
-                onSelect={setSelections}
-              ></AnswerItem>
-            ))}
-            <Buttons>
-              <Button
-                large
-                block
-                disabled={!selections[getQuestionId(match.url)]}
-                color="secondary"
-                textColor={themes.colors.textNormal}
-                rightIcon="chevron_right"
-                onClick={goToNextPage}
-              >
-                Next
-              </Button>
-            </Buttons>
-          </Card>
-        </Route>
-      ))}
+      {questions?.map((question, i) => {
+        return (
+          <Route
+            key={question.id}
+            exact
+            path={`${getUrlWithoutLastPart(match.path)}/${question.id}`}
+          >
+            <Card>
+              <BackLink onClick={() => history.goBack()}>
+                {i > 0 ? "Previous Question" : "Go back"}
+              </BackLink>
+              <Question>{question.title}</Question>
+              <SizedBox height="20px" />
+              {question.options.map(text => (
+                <AnswerItem
+                  key={text}
+                  questionId={question.id}
+                  answerId={text}
+                  text={text}
+                  selected={selections[question.id] === text}
+                  selections={selections}
+                  onSelect={setSelections}
+                ></AnswerItem>
+              ))}
+              <Buttons>
+                <Button
+                  large
+                  block
+                  disabled={!selections[getQuestionId(match.url)]}
+                  color="secondary"
+                  textColor={themes.colors.textNormal}
+                  rightIcon="chevron_right"
+                  onClick={goToNextPage}
+                >
+                  Next
+                </Button>
+              </Buttons>
+            </Card>
+          </Route>
+        );
+      })}
 
       <Route exact path={`/survey/:surveyId/complete`}>
         <Card center>
-          <BackLink onClick={() => history.goBack()}>
-            Previous Question
-          </BackLink>
+          <BackLink onClick={() => history.goBack()}>Go back</BackLink>
 
           <Head>
             <Question>Survey Completed</Question>
@@ -222,9 +222,7 @@ function getUrlWithoutLastPart(url) {
 }
 
 function getNextPage(id, arr) {
-  const currentPageNumber = arr
-    .map((el, i) => (el.id === id ? i : null))
-    .filter(el => el);
+  const currentPageNumber = arr.findIndex(el => el.id === id);
 
   const nextPage = arr[currentPageNumber + 1];
   if (nextPage?.id) return nextPage.id;

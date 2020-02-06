@@ -26,7 +26,13 @@ import Header from "../../components/Header";
 import { debounce, uniqBy } from "lodash";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { URL_ROOT, URL_SURVEYS, ACTIVE, IDLE, CANCEL } from "../../utils/constants";
+import {
+  URL_ROOT,
+  URL_SURVEYS,
+  ACTIVE,
+  IDLE,
+  CANCEL
+} from "../../utils/constants";
 
 const defaultValue = {
   title: "",
@@ -64,13 +70,13 @@ export default function CreateSurvey({ history }) {
   const updateOptions = (index, newOptions) => {
     const newQuestions = [...questions];
     newQuestions[index].options = newOptions || options;
-    setQuestions(questions);
+    setQuestions(newQuestions);
   };
 
   const updateQuestionTitle = (index, newTitle) => {
     const newQuestions = [...questions];
     newQuestions[index].title = newTitle || questionTitle;
-    setQuestions(questions);
+    setQuestions(newQuestions);
   };
 
   const handleOptionsChange = (e, index) => {

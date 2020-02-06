@@ -1,26 +1,28 @@
 # Survey App
 
-## Demo App on Heroku
+## Live Demo
 
-Front-end in react: [Survey Web App](https://nextly-survey-web.herokuapp.com/)
-Back-end API: [Survey API](https://nextly-survey.herokuapp.com/)
+[Survey Web App](https://chamatt.github.io/survey-web-app/)
 
-### API Docs
+Admin Info:
+- Email: admin@admin.com
+- Password: 123456
 
-[Postman Docs](https://documenter.getpostman.com/view/6051051/SWTD8Grh?version=latest#1788bb0c-b1b2-480d-bafe-87497e22c909)
+## Credits
 
-#### Admin Login Details
+UI/UX Inpirations:
+- [uixNinja](https://dribbble.com/shots/8024190-Mobile-Application-Design)
+- [Bobby Saban](https://dribbble.com/shots/5440714-Concept-Survey-Builder)
 
-Email: admin@admin.com
-Password: 123456
+Back-end API Development: 
+- [@brenoscalzer](https://github.com/brenoscalzer) 
+- [@rezendegc](https://github.com/rezendegc)
 
-## Running the app locally
 
-```
-yarn start
-```
 
 ## Specifications
+
+This project was made following [app-ideas](https://github.com/florinpop17/app-ideas) Survey App specifications, in the tier 3 advanced category.
 
 **Tier:** 3-Advanced
 
@@ -62,7 +64,7 @@ open for responses will be accessed from the app's web page.
 - [x] Survey Coordinator can define 1-5 mutually exclusive selections to each
       question.
 - [x] Survey Coordinator can enter a title for the survey.
-- [ ] Survey Coordinator can click a 'Cancel' button to return to the home
+- [x] Survey Coordinator can click a 'Cancel' button to return to the home
       page without saving the survey.
 - [x] Survey Coordinator can click a 'Save' button save a survey.
 
@@ -113,6 +115,4 @@ Some commercial survey services include:
 - [Traversy](https://youtu.be/SSDED3XKz-0)
 - [Typeform](https://www.typeform.com/)
 
-## Example projects
 
-[Javascript Questionnaire](https://codepen.io/amyfu/pen/oLChg)

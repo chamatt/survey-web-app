@@ -16,7 +16,6 @@ export const Container = styled.div`
     }
   }
 
-
   ${props =>
     props.selected &&
     `
@@ -24,15 +23,14 @@ export const Container = styled.div`
     color: ${props.theme.colors.textNormal};
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     `}
-  
 
-    ${props =>
-      props.percentage &&
-      `background-image: linear-gradient(90deg, ${
-        props.theme.colors.secondary
-      }44 ${parseInt(props.percentage * 100 - -1)}%, transparent ${parseInt(
-        props.percentage * 100
-      )}%, transparent  ${parseInt(101 - props.percentage * 100)}%);
+  ${props =>
+    props.percentage &&
+    `background-image: linear-gradient(90deg, ${
+      props.theme.colors.secondary
+    }44 ${parseInt(props.percentage * 100 - -1)}%, transparent ${parseInt(
+      props.percentage * 100
+    )}%, transparent  ${parseInt(101 - props.percentage * 100)}%);
         border-right: none;
         `}
 `;
@@ -41,7 +39,6 @@ export const AnswerTextContainer = styled.div`
   flex: 1;
   padding: 15px 5px;
   padding-left: 15px;
-  text-transform: capitalize;
 `;
 
 export const AnswerText = styled.p`
