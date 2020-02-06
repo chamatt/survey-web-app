@@ -4,7 +4,7 @@
 
 [Survey Web App](https://chamatt.github.io/survey-web-app/)
 
-Admin Info:
+Admin Info (needed in case you want to create new surveys):
 - Email: admin@admin.com
 - Password: 123456
 
