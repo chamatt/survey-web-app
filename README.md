@@ -14,6 +14,9 @@ UI/UX Inpirations:
 - [uixNinja](https://dribbble.com/shots/8024190-Mobile-Application-Design)
 - [Bobby Saban](https://dribbble.com/shots/5440714-Concept-Survey-Builder)
 
+Front-end with React
+- [@chamatt](https://github.com/chamatt) 
+
 Back-end API Development: 
 - [@brenoscalzer](https://github.com/brenoscalzer) 
 - [@rezendegc](https://github.com/rezendegc)
