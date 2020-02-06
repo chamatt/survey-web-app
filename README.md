@@ -24,6 +24,12 @@ Back-end API Development:
 Vector Arts:
 - [Icons8](https://icons8.com.br/ouch)
 
+## Screenshots
+
+|Homepage|Sign In|Create Survey|Survey|Results|
+|--------|-------|-------------|------|-------|
+|![Homepage](https://i.imgur.com/pxle2ou.png)|![Sign In](https://i.imgur.com/3nF77Ia.png)|![Create Survey](https://i.imgur.com/l8q5GQp.png)|![Survey](https://i.imgur.com/e8I5ZZL.png)|![Results](https://i.imgur.com/5FcQ2mH.png)|
+
 
 ## Specifications
 
