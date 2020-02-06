@@ -18,6 +18,8 @@ Back-end API Development:
 - [@brenoscalzer](https://github.com/brenoscalzer) 
 - [@rezendegc](https://github.com/rezendegc)
 
+Vector Arts:
+- [Icons8](https://icons8.com.br/ouch)
 
 
 ## Specifications
