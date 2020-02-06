@@ -16,6 +16,7 @@ UI/UX Inpirations:
 
 Front-end with React
 - [@chamatt](https://github.com/chamatt) 
+- [@rezendegc](https://github.com/rezendegc)
 
 Back-end API Development: 
 - [@brenoscalzer](https://github.com/brenoscalzer) 
