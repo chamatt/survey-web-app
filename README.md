@@ -8,7 +8,8 @@ Admin Info (needed in case you want to create new surveys):
 - Email: admin@admin.com
 - Password: 123456
 
-*PS: Due to the API begin hosted on Heroku free Dyno, it may take up to 15s for the server to wake up and return a response, the first time you access the application.*
+*PS: The API is offline due to the fact that the mongodb addon for heroku got shutdown, but if you want, you can host your own api for this api.
+Backend API: https://github.com/chamatt/survey-api*
 
 ## Credits
 
